@@ -1,9 +1,9 @@
-package theNorthApplication.app.domain.googleApi;
+package theNorthApplication.app.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import theNorthApplication.app.domain.googleApi.searcherClasses.Results;
+import theNorthApplication.app.api.searcherClasses.Results;
 
 import java.util.List;
 @Data

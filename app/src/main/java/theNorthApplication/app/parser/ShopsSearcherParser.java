@@ -3,16 +3,13 @@ package theNorthApplication.app.parser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Service;
-import theNorthApplication.app.domain.googleApi.SearchResults;
-import theNorthApplication.app.domain.googleApi.searcherClasses.Results;
+import theNorthApplication.app.api.SearchResults;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 public class ShopsSearcherParser {

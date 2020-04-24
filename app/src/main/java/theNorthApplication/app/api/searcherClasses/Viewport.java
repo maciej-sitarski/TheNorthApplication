@@ -1,4 +1,4 @@
-package theNorthApplication.app.domain.googleApi.searcherClasses;
+package theNorthApplication.app.api.searcherClasses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
