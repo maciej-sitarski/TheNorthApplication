@@ -29,7 +29,7 @@ public class ShopsSearcherParser {
 
         SearchResults nexPageResult;
 
-        while (searchResults.getNextPageToken() != null){
+        while (searchResults.getNextPageToken() != null) {
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());

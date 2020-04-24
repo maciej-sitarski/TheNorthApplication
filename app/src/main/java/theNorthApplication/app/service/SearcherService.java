@@ -34,11 +34,7 @@ public class SearcherService {
         List<StoreDto> storesDto = new ArrayList<>();
 
         shopsSearcherParser.parseSearch(shop, town, country).getResultsList().forEach(results -> {
-            try {
-                storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
-            } catch (IOException | UnirestException e) {
-                e.printStackTrace();
-            }
+            storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
         });
 
         logger.info("map search results to StoreDtoList");
