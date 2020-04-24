@@ -13,7 +13,7 @@ public class SearchResultsDtoMapper {
 
         StoreDto storeDto = new StoreDto();
         String[] address = results.getAddress().split(",");
-        address[1] = address[1].substring(0, 6);
+        address[1] = address[1].substring(7);
 
         storeDto.setId(results.getId());
         storeDto.setName(results.getName());
