@@ -3,18 +3,19 @@ package theNorthApplication.app.parser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
-import theNorthApplication.app.domain.googleApi.SearchResults;
-import theNorthApplication.app.domain.googleApi.searcherClasses.Results;
+import theNorthApplication.app.api.SearchResults;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShopsSearcherParser {
 
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -26,14 +27,13 @@ public class ShopsSearcherParser {
         SearchResults searchResults = getResponseFromApi(shop, town, country);
         logger.info("Parse searching to objects");
 
-        SearchResults nexPageResult = new SearchResults();
+        SearchResults nexPageResult;
 
-        while (searchResults.getNextPageToken() != null){
+        while (searchResults.getNextPageToken() != null) {
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
         }
-
         return searchResults;
     }
 
