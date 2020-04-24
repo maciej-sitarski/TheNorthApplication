@@ -3,6 +3,8 @@ package theNorthApplication.app.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Data
@@ -10,9 +12,15 @@ import javax.persistence.*;
 public class Statistic {
 
     @Id
-    @Column(name = "store_id")
-    private String id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name="queue_size")
-    private int queueSize;
+    @Max(value = 3)
+    @Min(value = 0)
+    private Integer queueSize;
+
+    @OneToOne(mappedBy = "statistic")
+    private Store store;
 }

@@ -2,10 +2,9 @@ package theNorthApplication.app.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Data
@@ -13,15 +12,25 @@ import javax.persistence.Table;
 public class Availability {
 
     @Id
-    @Column(name = "store_id")
-    private String id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name="mask_availability")
-    private int maskAvailability;
+    @Max(value = 3)
+    @Min(value = 0)
+    private Integer maskAvailability;
 
     @Column(name="gloves_availability")
-    private int glovesAvailability;
+    @Max(value = 3)
+    @Min(value = 0)
+    private Integer glovesAvailability;
 
     @Column(name="gel_availability")
-    private int gelAvailability;
+    @Max(value = 3)
+    @Min(value = 0)
+    private Integer gelAvailability;
+
+    @OneToOne(mappedBy = "availability")
+    private Availability availability;
 }
