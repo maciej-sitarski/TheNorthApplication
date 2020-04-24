@@ -26,7 +26,7 @@ public class ShopsSearcherParser {
         SearchResults searchResults = getResponseFromApi(shop, town, country);
         logger.info("Parse searching to objects");
 
-        SearchResults nexPageResult = new SearchResults();
+        SearchResults nexPageResult;
 
         while (searchResults.getNextPageToken() != null){
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
