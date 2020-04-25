@@ -32,4 +32,12 @@ public class TownService {
         logger.info("get towns list from locations");
         return townsList;
     }
+
+    public List<String> getAutocompleteTownList(String city){
+        return  getTownsList().stream().filter(townsDto->townsDto.getTown().toLowerCase().startsWith(city.toLowerCase())).map(TownsDto::getTown).collect(Collectors.toList());
+    }
+
+//    public boolean checkAvailabilityOfTown(String city){
+//        if(getTownsList().stream().map(townsDto -> townsDto.getTown()).collect(Collectors.toList()).
+//    }
 }
