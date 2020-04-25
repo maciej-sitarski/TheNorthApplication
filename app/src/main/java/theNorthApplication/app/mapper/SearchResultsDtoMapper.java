@@ -27,7 +27,7 @@ public class SearchResultsDtoMapper {
             town = getTownFormAddress(address[0]);
         }
         String lat = results.getGeometry().getLocation().getLat();
-        String lon = results.getGeometry().getLocation().getLat();
+        String lng = results.getGeometry().getLocation().getLng();
 
         storeDto.setId(results.getId());
         storeDto.setName(results.getName());
@@ -35,7 +35,7 @@ public class SearchResultsDtoMapper {
         storeDto.setStreet(street);
         storeDto.setTown(town);
         storeDto.setLat(lat);
-        storeDto.setLon(lon);
+        storeDto.setLng(lng);
         return storeDto;
     }
 

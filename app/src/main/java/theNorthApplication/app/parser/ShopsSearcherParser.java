@@ -37,11 +37,11 @@ public class ShopsSearcherParser {
         return searchResults;
     }
 
-    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lon, String radius) throws UnirestException, IOException {
+    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
 
-        logger.info("Parse searching based on arguments lat={}, lon={}, radius={} is to be done", lat, lon, radius);
+        logger.info("Parse searching based on arguments lat={}, lng={}, radius={} is to be done", lat, lng, radius);
 
-        SearchResults searchResults = getResponseFromApiByCoordinatesAndRadius(lat, lon, radius);
+        SearchResults searchResults = getResponseFromApiByCoordinatesAndRadius(lat, lng, radius);
 
         SearchResults nexPageResult;
 
@@ -62,7 +62,7 @@ public class ShopsSearcherParser {
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
 
-    private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lon, String radius) throws UnirestException, IOException {
+    private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
 
         String requestUri = String.format("https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s+%s+%s+%s+%s+%s&location=%s,%s&radius=%s&key=%s",
                 "supermarket",
@@ -72,7 +72,7 @@ public class ShopsSearcherParser {
                 "store",
                 "establishment",
                 lat,
-                lon,
+                lng,
                 radius,
                 apiKey);
 
