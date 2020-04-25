@@ -11,8 +11,11 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import theNorthApplication.app.api.SearchResults;
 import org.springframework.web.context.WebApplicationContext;
+import theNorthApplication.app.api.searcherClasses.Results;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -22,14 +25,15 @@ public class ShopsSearcherParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
 
-    public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException {
+    public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException, InterruptedException {
 
         SearchResults searchResults = getResponseFromApi(shop, town);
         logger.info("Parse searching to objects");
 
-        SearchResults nexPageResult;
+        SearchResults nexPageResult = new SearchResults();
 
         while (searchResults.getNextPageToken() != null) {
+            Thread.sleep(1600L);
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
@@ -37,7 +41,7 @@ public class ShopsSearcherParser {
         return searchResults;
     }
 
-    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
+    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException, InterruptedException {
 
         logger.info("Parse searching based on arguments lat={}, lng={}, radius={} is to be done", lat, lng, radius);
 
@@ -46,6 +50,7 @@ public class ShopsSearcherParser {
         SearchResults nexPageResult;
 
         while (searchResults.getNextPageToken() != null) {
+            Thread.sleep(1600L);
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
@@ -57,7 +62,7 @@ public class ShopsSearcherParser {
 
     private SearchResults getResponseFromApi(String shop, String town) throws UnirestException, IOException {
         HttpResponse<String> response = Unirest.get("https://maps.googleapis.com/maps/api/place/textsearch/json?" +
-                "query=" + shop  + "+" + town +
+                "query=" + shop + "+" + town +
                 "&key=" + apiKey).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
@@ -80,11 +85,11 @@ public class ShopsSearcherParser {
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
 
+
     private SearchResults getNextPageResults(String nexPageToken) throws UnirestException, IOException {
         HttpResponse<String> response = Unirest.get("https://maps.googleapis.com/maps/api/place/textsearch/json?" +
                 "pagetoken=" + nexPageToken +
                 "&key=" + apiKey).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
-
 }
