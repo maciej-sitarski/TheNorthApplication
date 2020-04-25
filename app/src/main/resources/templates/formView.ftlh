@@ -7,27 +7,10 @@
                 <p id="heading">
                     <strong>Podziel się swoją opinią</strong>
                 </p>
-
-
                 <p id="questions" style="margin-top: 3%">
                     Czy stałeś w kolejce przed sklepem?
                 </p>
 
-                <#--                <i class="far fa-thumbs-up"></i>-->
-                <#--                <i class="far fa-thumbs-down"></i>-->
-
-
-                <#--                <div class="btn-group" data-toggle="buttons">-->
-                <#--                    <label class="btn btn-cyan btn-rounded form-check-label waves-effect waves-light active">-->
-                <#--                        <input class="form-check-input" type="radio" checked autocomplete="off">-->
-                <#--                        <i class="far fa-thumbs-up"></i>-->
-                <#--                    </label>-->
-
-                <#--                    <label class="btn btn-cyan btn-rounded form-check-label">-->
-                <#--                        <input class="form-check-input" type="radio" autocomplete="off">-->
-                <#--                        <i class="far fa-thumbs-down"></i>-->
-                <#--                    </label>-->
-                <#--                </div>-->
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio"  name="inlineRadioOptions" id="exampleRadios1" value="option1" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios1">
@@ -48,7 +31,6 @@
                 <p id="questions">
                     Czy w sklepie były dostepne maseczki?
                 </p>
-
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio"  name="inlineRadioOptions2" id="exampleRadios3" value="option1" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios3">
@@ -109,13 +91,11 @@
                 </div>
                 <div>
                     <button type="submit" id="submitFormButton">
-                        <p style="font-family: 'Montserrat', sans-serif; margin-top: 5%" >
+                        <p style="font-family: 'Montserrat', sans-serif; margin-top: 3%"  >
                             <strong>Zakończ ankietę</strong>
                         </p>
                     </button>
                 </div>
-
-
             </form>
         </div>
     </div>
