@@ -1,7 +1,7 @@
 <#include "structure.ftlh">
-<div class="container-fluid fill" style="background-color: #cefdf7">
+<div class="container-fluid fill" style="background-color: #d1efe7">
     <div class="row">
-        <div class="col-lg-4  text-center" style="margin-top: 10%">
+        <div class="col-lg-4  text-center" style="margin-top: 5%">
             <button id="mainButton" >
                 <div style="font-size: 12vw;">
                     <i class="fas fa-map-marked-alt " style="color: #468690"></i>
