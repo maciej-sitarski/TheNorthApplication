@@ -30,7 +30,6 @@
                         <input  class=" position-static " name="isDisinfectantNeeded" type="checkbox"  style="height: 2.5vw; width: 2.5vw; ">
                     </div>
                 </div>
-
             </div>
             <button  id="submitFormButton" type="submit"  style="text-decoration: none !important; margin-top: 5%; padding-left: 15%; padding-right: 15%">
                 <p style="font-family: 'Montserrat', sans-serif; margin-top: 10%">

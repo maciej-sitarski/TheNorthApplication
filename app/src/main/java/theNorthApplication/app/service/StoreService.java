@@ -21,4 +21,5 @@ public class StoreService {
     public StoreEntityDto findStoreById(String id) {
         return storeEntityMapper.mapStoreToDto(storeRepository.findById(id));
     }
+
 }

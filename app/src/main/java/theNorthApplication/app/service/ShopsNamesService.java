@@ -31,4 +31,8 @@ public class ShopsNamesService {
     public List<String> getAutocompleteShopList(String shop){
         return  getShopsNames().stream().filter(shopNameDto->shopNameDto.getName().toLowerCase().startsWith(shop.toLowerCase())).map(ShopNameDto::getName).collect(Collectors.toList());
     }
+
+    public boolean checkAvailabilityOfShop(String shop){
+        return getShopsNames().stream().map(shopNameDto -> shopNameDto.getName().toLowerCase()).collect(Collectors.toList()).contains(shop.toLowerCase());
+    }
  }

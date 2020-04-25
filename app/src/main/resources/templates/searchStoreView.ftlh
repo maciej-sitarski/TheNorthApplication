@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-6 offset-md-3 text-center" style="margin-top: 2%">
             <p id="heading"> Znajdz swój sklep</p>
-            <form action="/searchList?city=city&shop=shop"
+            <form action="/validationOfShops?city=city&shop=shop"
                   method="get">
                 <label id="questions" style="margin-top: 3vw">Wpisz nazwę miasta</label>
                 <input type="text"  class="form-control"
