@@ -18,9 +18,7 @@ import java.util.List;
 public class SearcherService {
 
     private final ShopsSearcherParser shopsSearcherParser;
-
     private final SearchResultsDtoMapper searchResultsDtoMapper;
-
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
@@ -38,6 +36,16 @@ public class SearcherService {
         });
 
         logger.info("map search results to StoreDtoList");
+        return storesDto;
+    }
+
+    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lon, String radius) throws IOException, UnirestException {
+        List<StoreDto> storesDto = new ArrayList<>();
+
+        shopsSearcherParser.parseSearchByCoordinatesAndRadius(lat, lon, radius).getResultsList().forEach(results -> {
+            storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
+        });
+
         return storesDto;
     }
 }
