@@ -41,10 +41,10 @@ public class SearcherService {
         return storesDto;
     }
 
-    public List<StoreDto> getStoresByCoordinatesAndRadius(String shop, String lat, String lon, String radius) throws IOException, UnirestException {
+    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lon, String radius) throws IOException, UnirestException {
         List<StoreDto> storesDto = new ArrayList<>();
 
-        shopsSearcherParser.parseSearchByCoordinatesAndRadius(shop, lat, lon, radius).getResultsList().forEach(results -> {
+        shopsSearcherParser.parseSearchByCoordinatesAndRadius(lat, lon, radius).getResultsList().forEach(results -> {
             storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
         });
 

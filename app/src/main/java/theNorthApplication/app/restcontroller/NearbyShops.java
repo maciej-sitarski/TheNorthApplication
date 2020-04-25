@@ -18,10 +18,9 @@ public class NearbyShops {
     private SearcherService searcherService;
 
     @GetMapping("/nearbyshops")
-    public List<StoreDto> getNearbyShops(@RequestParam("shop") String shop,
-                                         @RequestParam("lat") String lat,
+    public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,
                                          @RequestParam("lon") String lon,
                                          @RequestParam("radius") String radius) throws IOException, UnirestException {
-        return searcherService.getStoresByCoordinatesAndRadius(shop, lat, lon, radius);
+        return searcherService.getStoresByCoordinatesAndRadius(lat, lon, radius);
     }
 }
