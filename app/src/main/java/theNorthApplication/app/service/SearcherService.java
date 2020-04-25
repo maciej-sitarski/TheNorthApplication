@@ -40,4 +40,14 @@ public class SearcherService {
         logger.info("map search results to StoreDtoList");
         return storesDto;
     }
+
+    public List<StoreDto> getStoresByCoordinatesAndRadius(String shop, String lat, String lon, String radius) throws IOException, UnirestException {
+        List<StoreDto> storesDto = new ArrayList<>();
+
+        shopsSearcherParser.parseSearchByCoordinatesAndRadius(shop, lat, lon, radius).getResultsList().forEach(results -> {
+            storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
+        });
+
+        return storesDto;
+    }
 }
