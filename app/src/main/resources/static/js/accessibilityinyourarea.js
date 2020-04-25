@@ -18,14 +18,38 @@ function initMap() {
             infoWindow.open(map);
             map.setCenter(pos);
 
-            var markerCoordinates = {lat: 54.489808, lng: 18.533537};
-            var marker = new google.maps.Marker({position: markerCoordinates, map: map});
+            drawMarkers(position.coords.latitude, position.coords.longitude);
+
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
         handleLocationError(false, infoWindow, map.getCenter());
     }
+}
+function drawMarkers(positionLat, positionLng) {
+    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lon=' + positionLng.toString() + '&radius=10000');
+    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lon=' + positionLng.toString() + '&radius=10000', function (dataset1) {
+
+        for (var i = 0; i < dataset1.length; i++) {
+            var store = dataset1[i];
+
+            console.log(store);
+
+            var id = store.id;
+            var name = store.name;
+            var street = store.street;
+            var town = store.town;
+            var country = store.country;
+            var lat = store.lat;
+            var lng = store.lng;
+
+            console.log(store);
+
+            var markerCoordinates = {lat: +lat, lng: +lng};
+            var marker = new google.maps.Marker({position: markerCoordinates, map: map});
+        }
+    });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

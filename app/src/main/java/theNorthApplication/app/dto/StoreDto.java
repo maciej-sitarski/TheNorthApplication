@@ -11,5 +11,5 @@ public class StoreDto {
     String town;
     String country;
     String lat;
-    String lon;
+    String lng;
 }
