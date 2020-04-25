@@ -20,7 +20,7 @@ public class NearbyShopsRestController {
     @GetMapping("/rest/api/nearbyshops")
     public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,
                                          @RequestParam("lng") String lng,
-                                         @RequestParam("radius") String radius) throws IOException, UnirestException {
+                                         @RequestParam("radius") String radius) throws IOException, UnirestException, InterruptedException {
         return searcherService.getStoresByCoordinatesAndRadius(lat, lng, radius);
     }
 }
