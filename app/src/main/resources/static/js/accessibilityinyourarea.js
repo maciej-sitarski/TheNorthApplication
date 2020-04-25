@@ -60,9 +60,11 @@ function drawMarkers(positionLat, positionLng) {
             var statStoreFromDatabase = getStoreInfoById(id);
 
             var iconPath;
-            if(statStoreFromDatabase.availability.maskAvailability===isMaskNeeded &&
-               statStoreFromDatabase.availability.glovesAvailability===isProtectiveGlovesNeeded &&
-               statStoreFromDatabase.availability.gelAvailability===isDisinfectantNeeded) {
+            if(statStoreFromDatabase===undefined){
+                iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            } else if(statStoreFromDatabase.availabilityDto.maskAvailability===isMaskNeeded &&
+               statStoreFromDatabase.availabilityDto.glovesAvailability===isProtectiveGlovesNeeded &&
+               statStoreFromDatabase.availabilityDto.gelAvailability===isDisinfectantNeeded) {
                iconPath = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
             } else {
                iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
