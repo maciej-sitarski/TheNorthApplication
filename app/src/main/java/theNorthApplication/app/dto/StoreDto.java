@@ -6,12 +6,10 @@ import lombok.Data;
 public class StoreDto {
 
     String id;
-
     String name;
-
     String street;
-
     String town;
-
     String country;
+    String lat;
+    String lon;
 }
