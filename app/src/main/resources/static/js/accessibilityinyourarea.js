@@ -1,5 +1,14 @@
-var map, infoWindow;
+var map;
+var infoWindow;
+var isProtectiveGlovesNeeded;
+var isDisinfectantNeeded;
+var isMaskNeeded;
+
 function initMap() {
+    isProtectiveGlovesNeeded = document.getElementById('isProtectiveGlovesNeeded').value;
+    isDisinfectantNeeded = document.getElementById('isDisinfectantNeeded').value;
+    isMaskNeeded = document.getElementById('isMaskNeeded').value;
+
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 55.257532, lng: 18.993839},
         zoom: 19
@@ -47,7 +56,19 @@ function drawMarkers(positionLat, positionLng) {
             console.log(store);
 
             var markerCoordinates = {lat: +lat, lng: +lng};
-            var marker = new google.maps.Marker({position: markerCoordinates, map: map});
+
+            var statStoreFromDatabase = getStoreInfoById(id);
+
+            var iconPath;
+            if(statStoreFromDatabase.availability.maskAvailability===isMaskNeeded &&
+               statStoreFromDatabase.availability.glovesAvailability===isProtectiveGlovesNeeded &&
+               statStoreFromDatabase.availability.gelAvailability===isDisinfectantNeeded) {
+               iconPath = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+            } else {
+               iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+            }
+            var marker = new google.maps.Marker({position: markerCoordinates,map: map});
+            marker.setIcon(iconPath);
         }
     });
 }
@@ -58,4 +79,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
+}
+
+function getStoreInfoById(id) {
+    var store;
+    $.getJSON('/rest/api/store/' + id, function (data) {
+        return data;
+    });
 }
