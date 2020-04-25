@@ -10,7 +10,13 @@
           crossorigin="anonymous">
     <!-- Our CSS -->
     <link rel="stylesheet" href="css/homeView.css">
+    <link rel="stylesheet" href="css/formView.css">
+
+    <script src="/js/form.js"></script>
+
+
     <script src="https://kit.fontawesome.com/c86be626ac.js" crossorigin="anonymous"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
