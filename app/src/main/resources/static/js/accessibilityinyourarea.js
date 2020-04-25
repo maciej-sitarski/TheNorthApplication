@@ -28,8 +28,8 @@ function initMap() {
     }
 }
 function drawMarkers(positionLat, positionLng) {
-    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lon=' + positionLng.toString() + '&radius=10000');
-    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lon=' + positionLng.toString() + '&radius=10000', function (dataset1) {
+    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000');
+    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000', function (dataset1) {
 
         for (var i = 0; i < dataset1.length; i++) {
             var store = dataset1[i];
