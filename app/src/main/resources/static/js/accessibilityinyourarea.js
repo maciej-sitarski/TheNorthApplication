@@ -3,6 +3,8 @@ var infoWindow;
 var isProtectiveGlovesNeeded;
 var isDisinfectantNeeded;
 var isMaskNeeded;
+var InforObj = [];
+var stores = [];
 
 function initMap() {
     isProtectiveGlovesNeeded = document.getElementById('isProtectiveGlovesNeeded').value;
@@ -11,9 +13,8 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 55.257532, lng: 18.993839},
-        zoom: 19
+        zoom: 10
     });
-    infoWindow = new google.maps.InfoWindow;
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -22,9 +23,6 @@ function initMap() {
                 lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
             map.setCenter(pos);
 
             drawMarkers(position.coords.latitude, position.coords.longitude);
@@ -39,27 +37,25 @@ function initMap() {
 function drawMarkers(positionLat, positionLng) {
     console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000');
     $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000', function (dataset1) {
-
         for (var i = 0; i < dataset1.length; i++) {
-            var store = dataset1[i];
+            const store = dataset1[i];
+            stores.push(store);
+
+            const id = stores[i].id;
+            const name = stores[i].name;
+            const street = stores[i].street;
+            const town = stores[i].town;
+            const country = stores[i].country;
+            const lat = stores[i].lat;
+            const lng = stores[i].lng;
 
             console.log(store);
 
-            var id = store.id;
-            var name = store.name;
-            var street = store.street;
-            var town = store.town;
-            var country = store.country;
-            var lat = store.lat;
-            var lng = store.lng;
+            const markerCoordinates = {lat: +lat, lng: +lng};
 
-            console.log(store);
+            const statStoreFromDatabase = getStoreInfoById(id);
 
-            var markerCoordinates = {lat: +lat, lng: +lng};
-
-            var statStoreFromDatabase = getStoreInfoById(id);
-
-            var iconPath;
+            let iconPath;
             if(statStoreFromDatabase===undefined){
                 iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
             } else if(statStoreFromDatabase.availabilityDto.maskAvailability===isMaskNeeded &&
@@ -69,39 +65,42 @@ function drawMarkers(positionLat, positionLng) {
             } else {
                iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
             }
-            var marker = new google.maps.Marker({position: markerCoordinates,title: 'Dupa Mariana', map: map});
+            const marker = new google.maps.Marker({position: markerCoordinates,title: stores[i].name, map: map});
             marker.setIcon(iconPath);
 
-            var contentString = '<div id="content">'+
+            const contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>'+
+                '<h1 id="firstHeading" class="firstHeading">' + stores[i].name + '</h1>'+
                 '<div id="bodyContent">'+
-                '<p><b>Dupa Mariana</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-                'sandstone rock formation in the southern part of the '+
-                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-                'south west of the nearest large town, Alice Springs; 450&#160;km '+
-                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-                'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-                'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-                'Aboriginal people of the area. It has many springs, waterholes, '+
-                'rock caves and ancient paintings. Uluru is listed as a World '+
-                'Heritage Site.</p>'+
-                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                '(last visited June 22, 2009).</p>'+
+                '<p>Maseczki '+ statStoreFromDatabase?.availabilityDto?.maskAvailability+ '</p>'+
+                '<p>Żel antybakteryjny '+ statStoreFromDatabase?.availabilityDto?.gelAvailability+ '</p>'+
+                '<p>Rekawiczki '+ statStoreFromDatabase?.availabilityDto?.glovesAvailability+ '</p>'+
+                '<a href="/shareopinion/" onclick="location.href=this.href+stores[i].id;return false;">'+
+                'Podziel się opinią :)</a> '+
                 '</div>'+
                 '</div>';
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 250
             });
 
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
+            marker.addListener('click', function () {
+                closeOtherInfo();
+                infowindow.open(marker.get('map'), marker);
+                InforObj[0] = infowindow;
             });
         }
     });
+}
+
+function closeOtherInfo() {
+    if (InforObj.length > 0) {
+        InforObj[0].set("marker", null);
+        InforObj[0].close();
+        InforObj.length = 0;
+    }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
