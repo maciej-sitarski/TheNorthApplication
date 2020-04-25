@@ -28,10 +28,10 @@ public class SearcherService {
     }
 
 
-    public List<StoreDto> getStoreDtoList(String shop, String town, String country) throws IOException, UnirestException {
+    public List<StoreDto> getStoreDtoList(String shop, String town) throws IOException, UnirestException {
         List<StoreDto> storesDto = new ArrayList<>();
 
-        shopsSearcherParser.parseSearch(shop, town, country).getResultsList().forEach(results -> {
+        shopsSearcherParser.parseSearch(shop, town).getResultsList().forEach(results -> {
             storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
         });
 

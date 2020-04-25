@@ -22,9 +22,9 @@ public class ShopsSearcherParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
 
-    public SearchResults parseSearch(String shop, String town, String country) throws UnirestException, IOException {
+    public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException {
 
-        SearchResults searchResults = getResponseFromApi(shop, town, country);
+        SearchResults searchResults = getResponseFromApi(shop, town);
         logger.info("Parse searching to objects");
 
         SearchResults nexPageResult;
@@ -55,9 +55,9 @@ public class ShopsSearcherParser {
 
     }
 
-    private SearchResults getResponseFromApi(String shop, String town, String country) throws UnirestException, IOException {
+    private SearchResults getResponseFromApi(String shop, String town) throws UnirestException, IOException {
         HttpResponse<String> response = Unirest.get("https://maps.googleapis.com/maps/api/place/textsearch/json?" +
-                "query=" + shop + "+" + country + "+" + town +
+                "query=" + shop  + "+" + town +
                 "&key=" + apiKey).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }

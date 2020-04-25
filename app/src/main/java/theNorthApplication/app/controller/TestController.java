@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import theNorthApplication.app.service.SearcherService;
+import theNorthApplication.app.service.ShopsNamesService;
 import theNorthApplication.app.service.TownService;
 
 import java.io.IOException;
@@ -17,13 +18,16 @@ public class TestController {
 
     private final TownService townService;
 
-    public TestController(SearcherService searcherService, TownService townService) {
+    private final ShopsNamesService shopsNamesService;
+
+    public TestController(SearcherService searcherService, TownService townService, ShopsNamesService shopsNamesService) {
         this.searcherService = searcherService;
         this.townService = townService;
+        this.shopsNamesService = shopsNamesService;
     }
 
     @GetMapping("/test")
     ResponseEntity<String> postResults() {
-        return new ResponseEntity<String>(townService.getTownsList().toString(), HttpStatus.OK);
+        return new ResponseEntity<String>(shopsNamesService.getShopsNames().toString(), HttpStatus.OK);
     }
 }
