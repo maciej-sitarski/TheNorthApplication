@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import theNorthApplication.app.api.SearchResults;
 import org.springframework.web.context.WebApplicationContext;
 import theNorthApplication.app.api.searcherClasses.Results;
+import theNorthApplication.app.dto.ShopNameDto;
+import theNorthApplication.app.service.ShopsNamesService;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +24,13 @@ import java.util.List;
 public class ShopsSearcherParser {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+    private final ShopsNamesService shopsNamesService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
+
+    public ShopsSearcherParser(ShopsNamesService shopsNamesService) {
+        this.shopsNamesService = shopsNamesService;
+    }
 
     public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException, InterruptedException {
 
@@ -55,9 +62,22 @@ public class ShopsSearcherParser {
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
         }
+        return searchResults;
+    }
+
+    public SearchResults parseSearchByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws IOException, UnirestException{
+        List<ShopNameDto> shopsNames = shopsNamesService.getShopsNames();
+        SearchResults searchResults = getResponseFromApiByCoordinatesAndRadiusByM(lat, lng, radius, shopsNames.get(0).getName(), shopsNames.get(0).getType());
+        shopsNames.remove(0);
+        shopsNames.forEach(shopNameDto -> {
+            try {
+                searchResults.getResultsList().addAll(getResponseFromApiByCoordinatesAndRadiusByM(lat, lng, radius, shopNameDto.getName(), shopNameDto.getType()).getResultsList());
+            } catch (UnirestException | IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         return searchResults;
-
     }
 
     private SearchResults getResponseFromApi(String shop, String town) throws UnirestException, IOException {
@@ -80,6 +100,14 @@ public class ShopsSearcherParser {
                 lng,
                 radius,
                 apiKey);
+
+        HttpResponse<String> response = Unirest.get(requestUri).asString();
+        return objectMapper.readValue(response.getBody(), SearchResults.class);
+    }
+
+    private SearchResults getResponseFromApiByCoordinatesAndRadiusByM(String lat, String lng, String radius, String shopName, String shopType) throws UnirestException, IOException {
+
+        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ lat + "," + lng +"&radius="+ radius + "&type="+ shopType + "&name=" + shopName + "&key=" + apiKey);
 
         HttpResponse<String> response = Unirest.get(requestUri).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);

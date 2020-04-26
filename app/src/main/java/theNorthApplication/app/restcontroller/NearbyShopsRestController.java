@@ -17,10 +17,18 @@ public class NearbyShopsRestController {
     @Autowired
     private SearcherService searcherService;
 
+//    @GetMapping("/rest/api/nearbyshops")
+//    public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,
+//                                         @RequestParam("lng") String lng,
+//                                         @RequestParam("radius") String radius) throws IOException, UnirestException, InterruptedException {
+//        return searcherService.getStoresByCoordinatesAndRadius(lat, lng, radius);
+//    }
+
     @GetMapping("/rest/api/nearbyshops")
     public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,
                                          @RequestParam("lng") String lng,
                                          @RequestParam("radius") String radius) throws IOException, UnirestException, InterruptedException {
-        return searcherService.getStoresByCoordinatesAndRadius(lat, lng, radius);
+        return searcherService.getStoresByCoordinatesAndRadiusByM(lat, lng, radius);
+
     }
 }

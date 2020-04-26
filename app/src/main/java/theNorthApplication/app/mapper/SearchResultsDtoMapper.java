@@ -4,6 +4,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Component;
 import theNorthApplication.app.api.searcherClasses.Results;
 import theNorthApplication.app.dto.StoreDto;
+import theNorthApplication.app.entity.Store;
 
 
 @Component
@@ -46,5 +47,14 @@ public class SearchResultsDtoMapper {
         } else {
             return separatedPostalCodeAndTown[0];
         }
+    }
+
+    public StoreDto nearByMapToDto(Results results){
+        StoreDto storeDto = new StoreDto();
+        storeDto.setId(results.getId());
+        storeDto.setName(results.getName());
+        storeDto.setLat(results.getGeometry().getLocation().getLat());
+        storeDto.setLng(results.getGeometry().getLocation().getLng());
+        return storeDto;
     }
 }
