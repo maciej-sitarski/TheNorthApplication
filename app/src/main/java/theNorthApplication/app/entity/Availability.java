@@ -34,7 +34,7 @@ public class Availability {
     @Column(name="mask_prize")
     private Double maskPrize;
 
-    @Column(name="mask_prize")
+    @Column(name="gloves_prize")
     private Double glovesPrize;
 
     @Column(name="gel_prize")
