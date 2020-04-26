@@ -95,7 +95,7 @@ function drawMarkers(positionLat, positionLng) {
                 '<p>Maseczki '+ maskAvailability+ '</p>'+
                 '<p>Żel antybakteryjny '+ gelAvailability+ '</p>'+
                 '<p>Rekawiczki '+ glovesAvailability+ '</p>'+
-                '<a href="/shareopinion/" onclick="location.href=this.href+stores[i].id;return false;">'+
+                '<a href="/shareopinion/858fd13c26ce3328392dda92797438f5938f87b6">'+
                 'Podziel się opinią :)</a> '+
                 '</div>'+
                 '</div>';
