@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import theNorthApplication.app.api.searcherClasses.Results;
 import theNorthApplication.app.dto.StoreDto;
 import theNorthApplication.app.mapper.SearchResultsDtoMapper;
 import theNorthApplication.app.parser.ShopsSearcherParser;
@@ -39,16 +38,7 @@ public class SearcherService {
         return storesDto;
     }
 
-    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lng, String radius) throws IOException, UnirestException, InterruptedException {
-        List<StoreDto> storesDto = new ArrayList<>();
-
-        shopsSearcherParser.parseSearchByCoordinatesAndRadius(lat, lng, radius).getResultsList().forEach(results -> {
-            storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
-        });
-        return storesDto;
-    }
-
-    public List<StoreDto> getStoresByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws InterruptedException, UnirestException, IOException {
+    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lng, String radius) throws InterruptedException, UnirestException, IOException {
         List<StoreDto> storeDtos = new ArrayList<>();
         shopsSearcherParser.parseSearchByCoordinatesAndRadiusByM(lat, lng, radius).getResultsList().forEach(results ->
                 storeDtos.add(searchResultsDtoMapper.nearByMapToDto(results)));
