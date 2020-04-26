@@ -67,3 +67,14 @@ ul.ui-state-hover, .ui-state-active {
 .ui-helper-hidden-accessible{
     display:none !important;
 }
+
+.option.option{
+    border-style: none;
+
+
+}
+.option.option:hover{
+    background: #60a3bc;
+
+
+}
