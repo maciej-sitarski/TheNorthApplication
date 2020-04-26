@@ -11,10 +11,11 @@
             <div class="col-md-12  text-center">
                 <p id="shopBody" style="margin-top: 10%">Niestety w naszej bazie nie ma jeszcze informacji o Twoim
                     sklepie :(</p>
-                <a href="/shareopinion/${id}" type="button" id="submitFormButton"
+                <input type="hidden" id="idShop" value="${id}">
+                <button onclick="goToForm2()" id="submitFormButton"
                    style="text-decoration: none !important; margin-top: 5%; padding-left: 7%;padding-right: 7%">
                     Lecz wspomóż naszą aplikacje i podziel się opinią!
-                </a>
+                </button>
             </div>
         </div>
 
@@ -23,16 +24,16 @@
         <div class="row" style="height: 60%">
             <div class="col-md-6  text-center">
                 <p id="shopBody">Procentowa szansa, że utkniesz w kolejce</p>
-
-                <a href="#" type="button" id="submitFormButton"
+                <input type="hidden" id="idShop" value="${id}">
+                <button onclick="goToForm2()"  id="submitFormButton"
                    style="text-decoration: none !important; margin-top: 10%; padding-left: 7%;padding-right: 7%">
                     Podziel się aktualnymi informacjami!
-                </a>
+                </button>
             </div>
             <div class="col-md-6  text-center">
                 <p id="shopBody">Dostepność produktów</p>
                 <div>
-                    <#if mask == true>
+                    <#if mask?has_content>
                         <img src="img/maseczkaTrue.png" class="img-fluid " alt="Responsive image"
                              style="max-width: 25%; height: auto;">
                     <#else >
@@ -43,20 +44,20 @@
                 </div>
 
                 <div>
-                    <#if gloves == true>
-                        <img src="img/rekawiczkaTrue.png" class="img-fluid" alt="Responsive image"
+                    <#if gloves?has_content>
+                        <img src="img/rękawiczkaTrue.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     <#else >
-                        <img src="img/rekawiczkaFalse.png" class="img-fluid" alt="Responsive image"
+                        <img src="img/rękawiczkaFalse.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     </#if>
                 </div>
                 <div>
-                    <#if gel == true>
-                    <img src="img/zelTrue.png" class="img-fluid" alt="Responsive image"
+                    <#if gel?has_content>
+                    <img src="img/żelTrue.png" class="img-fluid" alt="Responsive image"
                          style="max-width: 25%; height: auto">
                     <#else>
-                        <img src="img/zelFalse.png" class="img-fluid" alt="Responsive image"
+                        <img src="img/żelFalse.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     </#if>
                 </div>

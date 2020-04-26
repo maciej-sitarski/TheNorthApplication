@@ -70,25 +70,29 @@ function drawMarkers(positionLat, positionLng) {
             marker.setIcon(iconPath);
 
             let maskAvailability, gelAvailability, glovesAvailability;
+            if(statStoreFromDatabase !== undefined) {
+                if (statStoreFromDatabase.availabilityDto.maskAvailability === undefined || statStoreFromDatabase.availabilityDto.maskAvailability === false) {
+                    maskAvailability = "/img/maseczkaFalse.png";
+                } else {
+                    maskAvailability = "/img/maseczkaTrue.png";
+                }
 
-            if (statStoreFromDatabase?.availabilityDto?.maskAvailability === undefined || statStoreFromDatabase?.availabilityDto?.maskAvailability === false) {
-                maskAvailability="/img/maseczkaFalse.png";
+                if (statStoreFromDatabase.availabilityDto.gelAvailability === undefined || statStoreFromDatabase.availabilityDto.gelAvailability === false) {
+                    gelAvailability = "/img/zelFalse.png";
+                } else {
+                    gelAvailability = "/img/zelTrue.png";
+                }
+
+                if (statStoreFromDatabase.availabilityDto.glovesAvailability === undefined || statStoreFromDatabase.availabilityDto.glovesAvailability === false) {
+                    glovesAvailability = "/img/rekawiczkaFalse.png";
+                } else {
+                    glovesAvailability = "/img/rekawiczkaTrue.png";
+                }
             } else {
-                maskAvailability="/img/maseczkaTrue.png";
+                maskAvailability = "/img/maseczkaFalse.png";
+                gelAvailability = "/img/zelFalse.png";
+                glovesAvailability = "/img/rekawiczkaFalse.png";
             }
-
-            if (statStoreFromDatabase?.availabilityDto?.gelAvailability === undefined || statStoreFromDatabase?.availabilityDto?.gelAvailability === false) {
-                gelAvailability="/img/zelFalse.png";
-            } else {
-                gelAvailability="/img/zelTrue.png";
-            }
-
-            if (statStoreFromDatabase?.availabilityDto?.glovesAvailability === undefined || statStoreFromDatabase?.availabilityDto?.glovesAvailability === false) {
-                glovesAvailability="/img/rekawiczkaFalse.png";
-            } else {
-                glovesAvailability="/img/rekawiczkaTrue.png";
-            }
-
             const contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
