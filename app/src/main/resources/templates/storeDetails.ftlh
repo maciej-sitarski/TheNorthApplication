@@ -30,11 +30,11 @@
             <div class="col-md-6  text-center">
                 <p id="shopBody">Prawdopodobieństwo utknięcia w kolejce</p>
                 <input type="hidden" id="idShop" value="${id}">
-
-
-
+                <div id="piechart1" style="margin-top: 7%;width: 100%;height:65%"></div>
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script src="/js/charts.js"></script>
                 <button onclick="goToForm2()"  id="submitFormButton"
-                   style="text-decoration: none !important; margin-top: 10%; padding-left: 7%;padding-right: 7%">
+                   style="text-decoration: none !important;  padding-left: 7%;padding-right: 7%">
                     Podziel się aktualnymi informacjami!
                 </button>
             </div>
