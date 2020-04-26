@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="css/formView.css">
     <link rel="stylesheet" href="css/shopDetails.css">
 
-
-
-
     <script src="https://kit.fontawesome.com/c86be626ac.js" crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

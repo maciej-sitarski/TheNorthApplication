@@ -37,12 +37,22 @@
                 <select class="form-control" name="specificStore" id="specificShop"
                         style="font-size: 1.5vw; color: black; width: 40%;margin-right: auto; margin-left: auto ">
                     <#list listOfStores as store>
-                        <option class="option" value="${store.id};${store.name};${store.street};${store.town}">${store.name}  ${store.street}</option>
+                        <option class="option"
+                                value="${store.id};${store.name};${store.street};${store.town}">${store.name}  ${store.street}</option>
                     </#list>
                 </select>
-                <button id="submitFormButton" onclick="goToShop()" style="padding-left: 10%; padding-right: 10%">Dalej</button>
+                <#if choice == "form">
+                    <button id="submitFormButton" onclick="goToForm()" style="padding-left: 10%; padding-right: 10%">
+                        Dalej
+                    </button>
+                <#else>
+                    <button id="submitFormButton" onclick="goToShop()" style="padding-left: 10%; padding-right: 10%">
+                        Dalej
+                    </button>
+                </#if>
             <#else>
-                <p style="font-size: 1.5vw; color: black;margin-top: 5%">Brak wyników wyszukiwania. Spróbuj ponownie wybrać sklep.</p>
+                <p style="font-size: 1.5vw; color: black;margin-top: 5%">Brak wyników wyszukiwania. Spróbuj ponownie
+                    wybrać sklep.</p>
             </#if>
         </div>
     </div>

@@ -6,6 +6,7 @@
             <p id="heading"> Znajdz swój sklep</p>
             <form action="/validationOfShops?city=city&shop=shop"
                   method="get">
+
                 <label id="questions" style="margin-top: 3vw">Wpisz nazwę miasta</label>
                 <input type="text"  class="form-control"
                        id="city" name="city"
