@@ -68,15 +68,34 @@ function drawMarkers(positionLat, positionLng) {
             const marker = new google.maps.Marker({position: markerCoordinates,title: stores[i].name, map: map});
             marker.setIcon(iconPath);
 
+            let maskAvailability, gelAvailability, glovesAvailability;
+            if (statStoreFromDatabase?.availabilityDto?.maskAvailability === undefined || statStoreFromDatabase?.availabilityDto?.maskAvailability === false) {
+                maskAvailability='brak';
+            } else {
+                maskAvailability='na stanie';
+            }
+
+            if (statStoreFromDatabase?.availabilityDto?.gelAvailability === undefined || statStoreFromDatabase?.availabilityDto?.gelAvailability === false) {
+                gelAvailability='brak';
+            } else {
+                gelAvailability='na stanie';
+            }
+
+            if (statStoreFromDatabase?.availabilityDto?.glovesAvailability === undefined || statStoreFromDatabase?.availabilityDto?.glovesAvailability === false) {
+                glovesAvailability='brak';
+            } else {
+                glovesAvailability='na stanie';
+            }
+
             const contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
                 '<h1 id="firstHeading" class="firstHeading">' + stores[i].name + '</h1>'+
                 '<div id="bodyContent">'+
-                '<p>Maseczki '+ statStoreFromDatabase?.availabilityDto?.maskAvailability+ '</p>'+
-                '<p>Żel antybakteryjny '+ statStoreFromDatabase?.availabilityDto?.gelAvailability+ '</p>'+
-                '<p>Rekawiczki '+ statStoreFromDatabase?.availabilityDto?.glovesAvailability+ '</p>'+
-                '<a href="/shareopinion/" onclick="location.href=this.href+stores[i].id;return false;">'+
+                '<p>Maseczki '+ maskAvailability+ '</p>'+
+                '<p>Żel antybakteryjny '+ gelAvailability+ '</p>'+
+                '<p>Rekawiczki '+ glovesAvailability+ '</p>'+
+                '<a href="/shareopinion/858fd13c26ce3328392dda92797438f5938f87b6">'+
                 'Podziel się opinią :)</a> '+
                 '</div>'+
                 '</div>';
