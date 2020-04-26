@@ -15,7 +15,8 @@ public class DatabaseStoreRestController {
 
     @GetMapping("/rest/api/store/{id}")
     public StoreEntityDto getDatabaseStoreById(@PathVariable("id") String id) {
-        return storeService.findStoreById(id);
+        StoreEntityDto storeEntityDto = storeService.findStoreById(id);
+        return storeEntityDto;
     }
 
 }

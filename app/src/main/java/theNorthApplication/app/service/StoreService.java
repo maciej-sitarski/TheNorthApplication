@@ -7,6 +7,8 @@ import theNorthApplication.app.entity.Store;
 import theNorthApplication.app.mapper.StoreEntityMapper;
 import theNorthApplication.app.repositories.StoreRepository;
 
+import java.util.Optional;
+
 @Service
 public class StoreService {
 
@@ -19,7 +21,15 @@ public class StoreService {
     }
 
     public StoreEntityDto findStoreById(String id) {
-        return storeEntityMapper.mapStoreToDto(storeRepository.findById(id).orElse(null));
+        if (id.equals("82113b27a70a22748e7ceaef498b9d351de10ac2")){
+            String dasds =null;
+            String d = dasds + "";
+        }
+
+        Optional<Store> store = storeRepository.findById(id);
+
+        StoreEntityDto storeEntityDto = storeEntityMapper.mapStoreToDto(store.orElse(null));
+        return storeEntityDto;
     }
 
 }

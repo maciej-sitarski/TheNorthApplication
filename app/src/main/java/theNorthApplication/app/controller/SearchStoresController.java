@@ -55,7 +55,7 @@ public class SearchStoresController {
     }
 
     @GetMapping("/validationOfShops")
-    public ModelAndView getSpecificStores(HttpServletRequest req) throws IOException, UnirestException {
+    public ModelAndView getSpecificStores(HttpServletRequest req) throws IOException, UnirestException, InterruptedException {
         Map<String, Object> params = new HashMap<>();
         String city = req.getParameter("city");
         String shop = req.getParameter("shop");
