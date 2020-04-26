@@ -11,8 +11,11 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import theNorthApplication.app.api.SearchResults;
 import org.springframework.web.context.WebApplicationContext;
+import theNorthApplication.app.api.searcherClasses.Results;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -27,7 +30,7 @@ public class ShopsSearcherParser {
         SearchResults searchResults = getResponseFromApi(shop, town);
         logger.info("Parse searching to objects");
 
-        SearchResults nexPageResult;
+        SearchResults nexPageResult = new SearchResults();
 
         while (searchResults.getNextPageToken() != null) {
             Thread.sleep(1600L);
@@ -72,7 +75,7 @@ public class ShopsSearcherParser {
 
     private SearchResults getResponseFromApi(String shop, String town) throws UnirestException, IOException {
         HttpResponse<String> response = Unirest.get("https://maps.googleapis.com/maps/api/place/textsearch/json?" +
-                "query=" + shop  + "+" + town +
+                "query=" + shop + "+" + town +
                 "&key=" + apiKey).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
@@ -103,11 +106,11 @@ public class ShopsSearcherParser {
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
 
+
     private SearchResults getNextPageResults(String nexPageToken) throws UnirestException, IOException {
         HttpResponse<String> response = Unirest.get("https://maps.googleapis.com/maps/api/place/textsearch/json?" +
                 "pagetoken=" + nexPageToken +
                 "&key=" + apiKey).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
-
 }

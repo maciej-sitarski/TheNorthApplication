@@ -11,7 +11,6 @@
                 </p>
             </div>
             <div class="row">
-
                 <div class="col-lg-4 text-center" style="margin-top: 3%">
                     <img src="img/maseczka.png" class="img-fluid" alt="Responsive image">
                     <div class="form-check text-center">
@@ -30,7 +29,6 @@
                         <input  class=" position-static " name="isDisinfectantNeeded" type="checkbox"  style="height: 2.5vw; width: 2.5vw; ">
                     </div>
                 </div>
-
             </div>
             <button  id="submitFormButton" type="submit"  style="text-decoration: none !important; margin-top: 5%; padding-left: 15%; padding-right: 15%">
                 <p style="font-family: 'Montserrat', sans-serif; margin-top: 10%">

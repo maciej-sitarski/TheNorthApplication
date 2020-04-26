@@ -29,5 +29,6 @@ public class NearbyShopsRestController {
                                          @RequestParam("lng") String lng,
                                          @RequestParam("radius") String radius) throws IOException, UnirestException, InterruptedException {
         return searcherService.getStoresByCoordinatesAndRadiusByM(lat, lng, radius);
+
     }
 }

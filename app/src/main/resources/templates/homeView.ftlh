@@ -5,7 +5,7 @@
 
             <div class="row">
                 <div class="col-lg-4  text-center" style="margin-top: 10%">
-                    <a type="button" href="#" id="mainButton">
+                    <a type="button" href="/searchStore?choice=shopDetails" id="mainButton">
                         <div style="font-size: 12vw;">
                             <i class="fas fa-map-marked-alt " style="color: #468690"></i>
                         </div>
@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="col-lg-4  text-center" style="margin-top: 10%">
-                    <a type="button" href="/form" id="mainButton">
+                    <a type="button" href="/searchStore?choice=form" id="mainButton">
                         <div style="font-size: 12vw;">
                             <i class="fas fa-reply  fa-flip-horizontal" style="color: #468690"></i>
                         </div>

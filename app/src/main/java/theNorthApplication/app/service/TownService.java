@@ -37,7 +37,7 @@ public class TownService {
         return  getTownsList().stream().filter(townsDto->townsDto.getTown().toLowerCase().startsWith(city.toLowerCase())).map(TownsDto::getTown).collect(Collectors.toList());
     }
 
-//    public boolean checkAvailabilityOfTown(String city){
-//        if(getTownsList().stream().map(townsDto -> townsDto.getTown()).collect(Collectors.toList()).
-//    }
+    public boolean checkAvailabilityOfTown(String city){
+        return getTownsList().stream().map(townsDto -> townsDto.getTown().toLowerCase()).collect(Collectors.toList()).contains(city.toLowerCase());
+    }
 }
