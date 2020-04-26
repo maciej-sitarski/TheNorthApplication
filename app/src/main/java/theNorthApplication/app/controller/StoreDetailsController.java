@@ -40,6 +40,16 @@ public class StoreDetailsController {
             if(storeEntityDto.getAvailabilityDto().isGelAvailability()){
                 params.put("gel", "gel");
             }
+            if(storeEntityDto.getAvailabilityDto().getMaskPrize()!=null){
+                params.put("maskPrice", storeEntityDto.getAvailabilityDto().getMaskPrize());
+            }
+            if(storeEntityDto.getAvailabilityDto().getGlovesPrize()!=null){
+                params.put("glovesPrice", storeEntityDto.getAvailabilityDto().getGlovesPrize());
+            }
+            if(storeEntityDto.getAvailabilityDto().getGelPrize()!=null){
+                params.put("gelPrice", storeEntityDto.getAvailabilityDto().getGelPrize());
+            }
+
 
         }else{
             params.put("noData", "noData");

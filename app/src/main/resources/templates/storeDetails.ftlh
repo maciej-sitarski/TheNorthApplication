@@ -26,13 +26,14 @@
         </div>
     </div>
 
-    <#else>
-
+    <#else >
+    <div class="row">
+        <div class="col-10 offset-1">
             <div class="row" style="height: 60%; margin-top: 2%">
                 <div class="col-md-6  text-center">
                     <p id="shopBody">Prawdopodobieństwo utknięcia w kolejce</p>
                     <input type="hidden" id="idShop" value="${id}">
-                    <div id="piechart1" style="margin-top: 7%;width: 100%;height:62%"></div>
+                    <div id="piechart1" style="margin-top: 7%;width: 100%;height:58%"></div>
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script src="/js/charts.js"></script>
                     <button onclick="goToForm2()" id="submitFormButton"
@@ -41,39 +42,72 @@
                     </button>
                 </div>
                 <div class="col-md-6  text-center">
-                    <p id="shopBody">Dostepność produktów</p>
-                    <div>
+                    <p id="shopBody" style="margin: 0">Dostepność produktów</p>
+                    <p id="shopBody" style="font-size: 1.5vw; margin: 0 0 5% 0">(Podane ceny są orientacyjne)</p>
+                    <div style="display: inline;">
                         <#if mask?has_content>
                             <img src="img/maseczkaTrue.png" class="img-fluid " alt="Responsive image"
-                                 style="max-width: 25%; height: auto;">
+                                 style="max-width: 25%; height: auto; display: inline-block">
                         <#else >
                             <img src="img/maseczkaFalse.png" class="img-fluid " alt="Responsive image"
-                                 style="max-width: 25%; height: auto;">
+                                 style="max-width: 25%; height: auto; display: inline-block">
+                        </#if>
+                        <p id="questions" style="display: inline-block; font-size: 1vw">
+                            Cena(za jedną maseczkę):
+                        </p>
+                        <#if maskPrice?has_content>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> ${maskPrice} zł
+                            </p>
+                        <#else>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> Brak danych
+                            </p>
                         </#if>
 
                     </div>
-
-                    <div style="margin-top: 5%">
+                    <div style="margin-top: 5%;"></div>
+                    <div style=" display: inline;">
                         <#if gloves?has_content>
                             <img src="img/rekawiczkaTrue.png" class="img-fluid" alt="Responsive image"
-                                 style="max-width: 25%; height: auto">
+                                 style="max-width: 25%; height: auto; display: inline-block">
                         <#else >
                             <img src="img/rekawiczkaFalse.png" class="img-fluid" alt="Responsive image"
-                                 style="max-width: 25%; height: auto">
+                                 style="max-width: 25%; height: auto; display: inline-block">
+                        </#if>
+                        <p id="questions" style="display: inline-block; font-size: 1vw">
+                            Cena(za jedną parę rękawiczek):
+                        </p>
+                        <#if glovesPrice?has_content>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> ${glovesPrice} zł
+                            </p>
+                        <#else>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> Brak danych
+                            </p>
                         </#if>
                     </div>
+                    <div style="margin-top: 5%"></div>
 
-                    <div style="margin-top: 5%">
+                    <div style=" display: inline;">
                         <#if gel?has_content>
                             <img src="img/zelTrue.png" class="img-fluid" alt="Responsive image"
-                                 style="max-width: 25%; height: auto">
+                                 style="max-width: 25%; height: auto; display: inline-block">
                         <#else>
                             <img src="img/zelFalse.png" class="img-fluid" alt="Responsive image"
-                                 style="max-width: 25%; height: auto">
+                                 style="max-width: 25%; height: auto; display: inline-block">
+                        </#if>
+                        <p id="questions" style="display: inline-block; font-size: 1vw">
+                            Cena(za 100ml płynu):
+                        </p>
+                        <#if gelPrice?has_content>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> ${gelPrice} zł
+                            </p>
+                        <#else>
+                            <p id="questions" style="display: inline-block; font-size: 1vw"> Brak danych
+                            </p>
                         </#if>
                     </div>
                 </div>
             </div>
             </#if>
-        
+        </div>
+    </div>
 </div>
