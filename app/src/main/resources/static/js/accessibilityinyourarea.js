@@ -54,6 +54,7 @@ function drawMarkers(positionLat, positionLng) {
             const markerCoordinates = {lat: +lat, lng: +lng};
 
             const statStoreFromDatabase = getStoreInfoById(id);
+            console.log(statStoreFromDatabase);
 
             let iconPath;
             if(statStoreFromDatabase===undefined){
