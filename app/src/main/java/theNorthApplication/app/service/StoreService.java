@@ -22,4 +22,8 @@ public class StoreService {
         return storeEntityMapper.mapStoreToDto(storeRepository.findById(id).orElse(null));
     }
 
+    public void saveUpdateStoreAndAvalibility(String id, String queueTrue,String queueFalse, String maskTrue,String maskFalse, String glovesTrue,String glovesFalse, String gelTrue,String gelFalse){
+
+    }
+
 }
