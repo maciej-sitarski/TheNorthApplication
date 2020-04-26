@@ -26,9 +26,8 @@
         </div>
     </div>
 
-    <#else >
-    <div class="row">
-        <div class="col-10 offset-1">
+    <#else>
+
             <div class="row" style="height: 60%; margin-top: 2%">
                 <div class="col-md-6  text-center">
                     <p id="shopBody">Prawdopodobieństwo utknięcia w kolejce</p>
@@ -76,6 +75,5 @@
                 </div>
             </div>
             </#if>
-        </div>
-    </div>
+        
 </div>
