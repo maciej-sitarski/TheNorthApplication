@@ -104,29 +104,47 @@
                             Jakie były ceny w sklepie? (opcjonalne)
                         </p>
 
-                        <label>
-                            <p id="questions">
-                                Maseczka (1 sztuka, zł)
+
+                            <label>
+                                <p id="questions">
+                                    Maseczka (1 sztuka)
+                                </p>
+                            </label>
+                        <div>
+                            <input type="text"  class="form-control" name="maskPrice" style="margin-left:auto; margin-bottom: 10%;
+                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%; display: inline-block">
+                            <p id="questions" style="display: inline-block">
+                                zł
                             </p>
-                        </label>
-                        <input type="text"  class="form-control" name="maskPrice" style="margin-left:auto; margin-bottom: 10%;
-                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%">
+                        </div>
+
 
                         <label>
                             <p id="questions">
-                                Rękawiczki (1 para, zł)
+                                Rękawiczki (1 para)
                             </p>
                         </label>
+                        <div>
                         <input type="text"  class="form-control" name="glovesPrice" style="margin-left:auto; margin-bottom: 10%;
-                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%">
+                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%; display: inline-block">
+                            <p id="questions" style="display: inline-block">
+                                zł
+                            </p>
+                        </div>
 
                         <label>
                             <p id="questions">
-                                Płyn antybakteryjny (100ml, zł)
+                                Płyn antybakteryjny (100ml)
                             </p>
                         </label>
-                        <input type="text"  class="form-control" name="gelPrice" style="margin-left:auto;
-                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%">
+                        <div>
+                            <input type="text"  class="form-control" name="gelPrice" style="margin-left:auto;
+                        margin-right:auto; height: 2vw; font-size: 1.2vw; color: black; width: 15%; display: inline-block">
+                            <p id="questions" style="display: inline-block">
+                                zł
+                            </p>
+                        </div>
+
                     </div>
                 </div>
                 <div>
