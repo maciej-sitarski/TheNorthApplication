@@ -11,7 +11,6 @@
                 </p>
             </div>
             <div class="row">
-
                 <div class="col-lg-4 text-center" style="margin-top: 3%">
                     <img src="img/maseczka.png" class="img-fluid" alt="Responsive image">
                     <div class="form-check text-center">

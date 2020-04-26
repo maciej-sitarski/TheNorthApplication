@@ -17,7 +17,7 @@
                        id="shop" name="shop"
                        style="height: 2vw; font-size: 1.5vw; color: black; width: 40%;margin-right: auto; margin-left: auto "
                        required>
-                <button type="submit" id="submitFormButton">
+                <button type="submit" id="submitFormButton"  style="padding-left: 10%; padding-right: 10%">
                     <p style="font-family: 'Montserrat', sans-serif; margin-top: 3%"  >
                         <strong>Znajdź sklepy</strong>
                     </p>

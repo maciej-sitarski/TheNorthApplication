@@ -18,6 +18,7 @@
 }
 
 #submitFormButton {
+    font-family: 'Montserrat', sans-serif;
     border: none;
     background: #60a3bc;
     color: white !important;
