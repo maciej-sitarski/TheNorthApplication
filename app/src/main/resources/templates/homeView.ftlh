@@ -1,10 +1,15 @@
 <#include "structure.ftlh">
 <div class="container-fluid fill" style="background-color: #d1efe7">
     <div class="row>">
+        <div class="col-12 " >
+            <img src="img/logo.png" class="img-fluid" alt="Responsive image"  style="max-width: 75%;width: 25%; height: auto;margin-top: 1%">
+            <i class="far fa-envelope fa-5x" style="margin-left: 70%; color: #9dc6c5 "></i>
+        </div>
+    </div>
+    <div class="row>">
         <div class="col-10  offset-1">
-
             <div class="row">
-                <div class="col-lg-4  text-center" style="margin-top: 12%">
+                <div class="col-lg-4  text-center" style="margin-top: 7%">
                     <a type="button" href="/searchStore?choice=shopDetails" id="mainButton"
                        style="padding-right: 11%; padding-left: 11%">
                         <div style="font-size: 12vw;">
@@ -23,7 +28,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4 text-center" style="margin-top: 12%">
+                <div class="col-lg-4 text-center" style="margin-top: 7%">
                     <a type="button" href="/needView" id="mainButton">
                         <div style="font-size: 12vw;">
                             <i class="fas fa-route " style="color: #468690"></i>
@@ -37,12 +42,12 @@
 
                     <div>
                         <p id="inscription" style="width: 90%; margin-left: auto; margin-right: auto; font-size: 1.3vw">
-                            Sprawdz dostepną okolicę
+                            Wybierz potrzebne artykuły i znajdź zaopatrzone sklepy w pobliżu.
                         </p>
                     </div>
 
                 </div>
-                <div class="col-lg-4  text-center" style="margin-top: 12%">
+                <div class="col-lg-4  text-center" style="margin-top: 7%">
                     <a type="button" href="/searchStore?choice=form" id="mainButton">
                         <div style="font-size: 12vw;">
                             <i class="fas fa-reply  fa-flip-horizontal" style="color: #468690"></i>
