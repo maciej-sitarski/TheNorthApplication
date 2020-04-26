@@ -1,5 +1,5 @@
 #heading{
-    font-size: 3vw;
+    font-size: 2.5vw;
     font-family: 'Montserrat', sans-serif;
     color: #35676f;
 }
@@ -32,7 +32,7 @@
     margin-top: 2vw;
 }
 #submitFormButton:hover {
-    color: #404040 !important;
+    color: #a4ffce !important;
     font-weight: 500 !important;
     letter-spacing: 3px;
     background: #60a3bc;

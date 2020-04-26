@@ -2,7 +2,12 @@
 
 <div class="container-fluid fill" style="background-color: #d1efe7;">
     <div class="row" >
-        <div class="col-10 offset-1 text-center">
+        <div class="col-1 text-center">
+            <div style="font-size: 4vw;margin-top: 8%;">
+            <a href="javascript:history.back()"  type="button" > <i class="fas fa-arrow-alt-circle-left" style="color: #60a3bc"></i> </a>
+            </div>
+        </div>
+        <div class="col-10  text-center">
             <form action="/accessibilityinyourarea?isProtectiveGlovesNeeded=isProtectiveGlovesNeeded&isDisinfectantNeeded=isDisinfectantNeeded&isMaskNeeded=isMaskNeeded"
                   method="get">
             <div>
@@ -30,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <button  id="submitFormButton" type="submit"  style="text-decoration: none !important; margin-top: 5%; padding-left: 15%; padding-right: 15%">
+            <button  id="submitFormButton" type="submit"  style="text-decoration: none !important; margin-top: 5%; padding-left: 10%; padding-right: 10%">
                 <p style="font-family: 'Montserrat', sans-serif; margin-top: 10%">
                     <strong>Dalej</strong>
                 </p>

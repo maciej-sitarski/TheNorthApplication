@@ -1,4 +1,5 @@
 <#include "structure.ftlh">
+
 <div id="map"></div>
 <script src="./js/accessibilityinyourarea.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g&callback=initMap"></script>

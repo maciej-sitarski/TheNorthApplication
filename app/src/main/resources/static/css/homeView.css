@@ -10,14 +10,14 @@ html, body {
 #mainButton{
     border: none;
     background: white;
-    padding-left: 18%;
-    padding-right: 18%;
-    border-radius: 100%;
+    padding-left: 13%;
+    padding-right: 13%;
+    border-radius: 50%;
     font-weight: 400;
 }
 
 #mainButton:hover{
-    color: #404040 !important;
+    color: #a4ffce !important;
     font-weight: 500 !important;
     letter-spacing: 3px;
     background: #a4ffce;
@@ -31,9 +31,10 @@ html, body {
 
 #inscription{
     margin-top: 8%;
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: 'Montserrat', sans-serif;
     color: #35676f;
+    line-height: 1;
 }
 
 ul.ui-autocomplete {
