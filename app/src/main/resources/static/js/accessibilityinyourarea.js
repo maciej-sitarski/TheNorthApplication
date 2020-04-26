@@ -96,7 +96,7 @@ function drawMarkers(positionLat, positionLng) {
                 '<p>Maseczki '+ maskAvailability+ '</p>'+
                 '<p>Żel antybakteryjny '+ gelAvailability+ '</p>'+
                 '<p>Rekawiczki '+ glovesAvailability+ '</p>'+
-                '<a href="/shareopinion/858fd13c26ce3328392dda92797438f5938f87b6">'+
+                '<a href="/shareopinion?id=858fd13c26ce3328392dda92797438f5938f87b6">'+
                 'Podziel się opinią :)</a> '+
                 '</div>'+
                 '</div>';
@@ -123,13 +123,13 @@ function closeOtherInfo() {
     }
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-}
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//     infoWindow.setPosition(pos);
+//     infoWindow.setContent(browserHasGeolocation ?
+//         'Error: The Geolocation service failed.' :
+//         'Error: Your browser doesn\'t support geolocation.');
+//     infoWindow.open(map);
+// }
 
 function getStoreInfoById(id) {
     var store;
