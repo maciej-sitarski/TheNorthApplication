@@ -5,7 +5,7 @@
 
             <div class="row">
                 <div class="col-lg-4  text-center" style="margin-top: 10%">
-                    <a type="button" href="#" id="mainButton">
+                    <a type="button" href="/searchStore" id="mainButton">
                         <div style="font-size: 12vw;">
                             <i class="fas fa-map-marked-alt " style="color: #468690"></i>
                         </div>

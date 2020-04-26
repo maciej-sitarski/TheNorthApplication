@@ -11,6 +11,7 @@
     <!-- Our CSS -->
     <link rel="stylesheet" href="css/homeView.css">
     <link rel="stylesheet" href="css/formView.css">
+    <link rel="stylesheet" href="css/shopDetails.css">
 
 
 

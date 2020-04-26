@@ -3,9 +3,9 @@ package theNorthApplication.app.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import theNorthApplication.app.entity.Store;
 
-import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Optional;
 
-public interface StoreRepository extends JpaRepository<Store, Integer> {
+public interface StoreRepository extends JpaRepository<Store, String> {
 
-    Store findById(String id);
+    Optional<Store> findById(String id);
 }

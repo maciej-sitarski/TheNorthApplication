@@ -11,3 +11,14 @@ $(function() {
         minLength: 2,
     });
 });
+
+function goToShop(){
+    let String = $("#specificShop").val();
+    let array = String.split(';');
+    let id = array[0];
+    let name = array[1];
+    let street = array[2];
+    let town = array[3];
+    window.location = '/storeDetails?id='+id+'&name='+name+'&street='+street+'&town='+town
+
+}
