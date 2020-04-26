@@ -55,6 +55,11 @@ public class SearchResultsDtoMapper {
         storeDto.setName(results.getName());
         storeDto.setLat(results.getGeometry().getLocation().getLat());
         storeDto.setLng(results.getGeometry().getLocation().getLng());
+        String [] address = results.getVicinity().split(",");
+        if(address.length>1) {
+            storeDto.setStreet(address[0]);
+            storeDto.setTown(address[1]);
+        } else storeDto.setTown(address[0]);
         return storeDto;
     }
 }
