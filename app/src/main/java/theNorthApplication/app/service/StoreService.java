@@ -32,4 +32,8 @@ public class StoreService {
         return storeEntityDto;
     }
 
+    public void saveUpdateStoreAndAvalibility(String id, String queueTrue,String queueFalse, String maskTrue,String maskFalse, String glovesTrue,String glovesFalse, String gelTrue,String gelFalse){
+
+    }
+
 }
