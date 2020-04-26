@@ -54,6 +54,7 @@ function drawMarkers(positionLat, positionLng) {
             const markerCoordinates = {lat: +lat, lng: +lng};
 
             const statStoreFromDatabase = getStoreInfoById(id);
+            console.log(statStoreFromDatabase);
 
             let iconPath;
             if(statStoreFromDatabase===undefined){
@@ -69,33 +70,34 @@ function drawMarkers(positionLat, positionLng) {
             marker.setIcon(iconPath);
 
             let maskAvailability, gelAvailability, glovesAvailability;
+
             if (statStoreFromDatabase?.availabilityDto?.maskAvailability === undefined || statStoreFromDatabase?.availabilityDto?.maskAvailability === false) {
-                maskAvailability='brak';
+                maskAvailability="/img/maseczkaFalse.png";
             } else {
-                maskAvailability='na stanie';
+                maskAvailability="/img/maseczkaTrue.png";
             }
 
             if (statStoreFromDatabase?.availabilityDto?.gelAvailability === undefined || statStoreFromDatabase?.availabilityDto?.gelAvailability === false) {
-                gelAvailability='brak';
+                gelAvailability="/img/zelFalse.png";
             } else {
-                gelAvailability='na stanie';
+                gelAvailability="/img/zelTrue.png";
             }
 
             if (statStoreFromDatabase?.availabilityDto?.glovesAvailability === undefined || statStoreFromDatabase?.availabilityDto?.glovesAvailability === false) {
-                glovesAvailability='brak';
+                glovesAvailability="/img/rekawiczkaFalse.png";
             } else {
-                glovesAvailability='na stanie';
+                glovesAvailability="/img/rekawiczkaTrue.png";
             }
 
             const contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">' + stores[i].name + '</h1>'+
+                '<h5 id="firstHeading" class="firstHeading">' + stores[i].name + '</h5>'+
                 '<div id="bodyContent">'+
-                '<p>Maseczki '+ maskAvailability+ '</p>'+
-                '<p>Żel antybakteryjny '+ gelAvailability+ '</p>'+
-                '<p>Rekawiczki '+ glovesAvailability+ '</p>'+
-                '<a href="/shareopinion/858fd13c26ce3328392dda92797438f5938f87b6">'+
+                '<p style="display: inline;margin-right: 10px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="42" width="42"></p>'+
+                '<p style="display: inline;margin-right: 10px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="42" width="42"></p>'+
+                '<p style="display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="42" width="42"></p>'+
+                '<a class="btn btn-info d-block" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
                 '</div>'+
                 '</div>';
@@ -122,13 +124,13 @@ function closeOtherInfo() {
     }
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-}
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//     infoWindow.setPosition(pos);
+//     infoWindow.setContent(browserHasGeolocation ?
+//         'Error: The Geolocation service failed.' :
+//         'Error: Your browser doesn\'t support geolocation.');
+//     infoWindow.open(map);
+// }
 
 function getStoreInfoById(id) {
     var store;

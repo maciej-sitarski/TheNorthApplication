@@ -9,7 +9,8 @@
     <#if noData?has_content>
         <div class="row">
             <div class="col-md-12  text-center">
-                <p id="shopBody" style="margin-top: 10%">Niestety w naszej bazie nie ma jeszcze informacji o Twoim sklepie :(</p>
+                <p id="shopBody" style="margin-top: 10%">Niestety w naszej bazie nie ma jeszcze informacji o Twoim
+                    sklepie :(</p>
                 <a href="/shareopinion/${id}" type="button" id="submitFormButton"
                    style="text-decoration: none !important; margin-top: 5%; padding-left: 7%;padding-right: 7%">
                     Lecz wspomóż naszą aplikacje i podziel się opinią!
@@ -31,17 +32,33 @@
             <div class="col-md-6  text-center">
                 <p id="shopBody">Dostepność produktów</p>
                 <div>
-                    <img src="img/maseczka.png" class="img-fluid " alt="Responsive image"
-                         style="max-width: 25%; height: auto;">
+                    <#if mask == true>
+                        <img src="img/maseczkaTrue.png" class="img-fluid " alt="Responsive image"
+                             style="max-width: 25%; height: auto;">
+                    <#else >
+                        <img src="img/maseczkaFalse.png" class="img-fluid " alt="Responsive image"
+                             style="max-width: 25%; height: auto;">
+                    </#if>
+
                 </div>
 
                 <div>
-                    <img src="img/rękawiczka.png" class="img-fluid" alt="Responsive image"
-                         style="max-width: 25%; height: auto">
+                    <#if gloves == true>
+                        <img src="img/rekawiczkaTrue.png" class="img-fluid" alt="Responsive image"
+                             style="max-width: 25%; height: auto">
+                    <#else >
+                        <img src="img/rekawiczkaFalse.png" class="img-fluid" alt="Responsive image"
+                             style="max-width: 25%; height: auto">
+                    </#if>
                 </div>
                 <div>
-                    <img src="img/żel.png" class="img-fluid" alt="Responsive image"
+                    <#if gel == true>
+                    <img src="img/zelTrue.png" class="img-fluid" alt="Responsive image"
                          style="max-width: 25%; height: auto">
+                    <#else>
+                        <img src="img/zelFalse.png" class="img-fluid" alt="Responsive image"
+                             style="max-width: 25%; height: auto">
+                    </#if>
                 </div>
             </div>
         </div>

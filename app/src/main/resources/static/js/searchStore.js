@@ -27,6 +27,6 @@ function goToForm(){
     let String = $("#specificShop").val();
     let array = String.split(';');
     let id = array[0];
-    window.location = '/shareopinion/'+id
+    window.location = '/shareopinion?id='+id
 
 }
