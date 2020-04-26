@@ -36,8 +36,14 @@ public class SearchStoresController {
     }
 
     @GetMapping("/searchStore")
-    public ModelAndView getHomeView() {
+    public ModelAndView getHomeView(HttpServletRequest req) {
         Map<String, Object> params = new HashMap<>();
+        String choice = req.getParameter("choice");
+        if(choice.equals("form")){
+          req.getSession().setAttribute("choice", "form");
+        } else{
+            req.getSession().setAttribute("choice", "shopDetails");
+        }
         return new ModelAndView("searchStoreView", params);
     }
 
@@ -59,12 +65,19 @@ public class SearchStoresController {
         Map<String, Object> params = new HashMap<>();
         String city = req.getParameter("city");
         String shop = req.getParameter("shop");
+        String choice = (String)req.getSession().getAttribute("choice");
 
         if (townService.checkAvailabilityOfTown(city) && shopsNamesService.checkAvailabilityOfShop(shop)) {
             List<StoreDto> storeDtoList = searcherService.getStoreDtoList(shop, city).stream().filter(storeDto -> storeDto.getName().toLowerCase().startsWith(shop.toLowerCase().substring(0, 2))).collect(Collectors.toList());
             params.put("listOfStores", storeDtoList);
             params.put("city", city);
             params.put("shop", shop);
+            if(choice.equals("form")){
+                params.put("choice", "form");
+            } else {
+                params.put("choice", "shopDetails");
+            }
+
         } else {
             params.put("city", "empty");
             params.put("shop", "empty");

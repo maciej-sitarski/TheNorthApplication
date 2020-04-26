@@ -22,3 +22,11 @@ function goToShop(){
     window.location = '/storeDetails?id='+id+'&name='+name+'&street='+street+'&town='+town
 
 }
+
+function goToForm(){
+    let String = $("#specificShop").val();
+    let array = String.split(';');
+    let id = array[0];
+    window.location = '/shareopinion/'+id
+
+}

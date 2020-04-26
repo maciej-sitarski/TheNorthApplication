@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="css/homeView.css">
     <link rel="stylesheet" href="css/formView.css">
     <link rel="stylesheet" href="css/shopDetails.css">
-
-
-
+    <link rel="stylesheet" href="css/accessibilityinyourarea.css">
 
     <script src="https://kit.fontawesome.com/c86be626ac.js" crossorigin="anonymous"></script>
 
@@ -24,8 +22,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="/js/searchStore.js"></script>
+    <script src="/js/accessibilityinyourarea.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 </body>
