@@ -12,4 +12,5 @@ public class StoreDto {
     String country;
     String lat;
     String lng;
+    StoreEntityDto storeEntityDto;
 }
