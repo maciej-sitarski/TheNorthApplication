@@ -22,7 +22,7 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline" style="margin-left: 20%">
-                    <input class="form-check-input" type="radio"  name="queueFalse" id="exampleRadios2" value="true" style=" height: 2vw; width: 2vw;">
+                    <input class="form-check-input" type="radio"  name="queueTrue" id="exampleRadios2" value="false" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios2">
                         <div style="font-size: 4vw; margin-left: 20%">
                         <i class="far fa-thumbs-down" style="color: red"></i>
@@ -42,7 +42,7 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline" style="margin-left: 20%">
-                    <input class="form-check-input" type="radio"  name="maskFalse" id="exampleRadios4" value="true" style=" height: 2vw; width: 2vw;">
+                    <input class="form-check-input" type="radio"  name="maskTrue" id="exampleRadios4" value="false" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios4">
                         <div style="font-size: 4vw; margin-left: 20%">
                             <i class="far fa-thumbs-down" style="color: red"></i>
@@ -63,7 +63,7 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline" style="margin-left: 20%">
-                    <input class="form-check-input" type="radio"  name="glovesFalse" id="exampleRadios6" value="true" style=" height: 2vw; width: 2vw;">
+                    <input class="form-check-input" type="radio"  name="glovesTrue" id="exampleRadios6" value="false" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios6">
                         <div style="font-size: 4vw; margin-left: 20%">
                             <i class="far fa-thumbs-down" style="color: red"></i>
@@ -84,7 +84,7 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline" style="margin-left: 20%">
-                    <input class="form-check-input" type="radio"  name="gelFalse" id="exampleRadios4" value="true" style=" height: 2vw; width: 2vw;">
+                    <input class="form-check-input" type="radio"  name="gelTrue" id="exampleRadios4" value="false" style=" height: 2vw; width: 2vw;">
                     <label class="form-check-label" for="exampleRadios8">
                         <div style="font-size: 4vw; margin-left: 20%">
                             <i class="far fa-thumbs-down" style="color: red"></i>

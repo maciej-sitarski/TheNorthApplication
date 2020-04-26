@@ -10,6 +10,7 @@ public class ShopsNamesMapper {
     public ShopNameDto mapShopToDto(ShopsNames shopsNames){
         ShopNameDto shopNameDto = new ShopNameDto();
         shopNameDto.setName(shopsNames.getName());
+        shopNameDto.setType(shopsNames.getType());
         return shopNameDto;
     }
 }

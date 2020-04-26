@@ -39,8 +39,8 @@ function initMap() {
     }
 }
 function drawMarkers(positionLat, positionLng) {
-    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000');
-    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000', function (dataset1) {
+    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=2000');
+    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=2000', function (dataset1) {
         for (var i = 0; i < dataset1.length; i++) {
             const store = dataset1[i];
             stores.push(store);

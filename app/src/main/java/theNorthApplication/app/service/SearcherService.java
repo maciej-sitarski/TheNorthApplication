@@ -45,7 +45,13 @@ public class SearcherService {
         shopsSearcherParser.parseSearchByCoordinatesAndRadius(lat, lng, radius).getResultsList().forEach(results -> {
             storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
         });
-
         return storesDto;
+    }
+
+    public List<StoreDto> getStoresByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws InterruptedException, UnirestException, IOException {
+        List<StoreDto> storeDtos = new ArrayList<>();
+        shopsSearcherParser.parseSearchByCoordinatesAndRadiusByM(lat, lng, radius).getResultsList().forEach(results ->
+                storeDtos.add(searchResultsDtoMapper.nearByMapToDto(results)));
+        return storeDtos;
     }
 }
