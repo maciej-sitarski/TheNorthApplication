@@ -30,3 +30,9 @@ function goToForm(){
     window.location = '/shareopinion?id='+id
 
 }
+
+function goToForm2(){
+    let id= $("#idShop").val();
+    window.location = '/shareopinion?id='+id
+
+}
