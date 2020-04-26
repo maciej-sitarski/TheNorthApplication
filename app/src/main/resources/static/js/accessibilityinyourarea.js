@@ -17,7 +17,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 55.257532, lng: 18.993839},
-        zoom: 10
+        zoom: 15
     });
 
     if (navigator.geolocation) {
@@ -134,18 +134,3 @@ function closeOtherInfo() {
         InforObj.length = 0;
     }
 }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//     infoWindow.setPosition(pos);
-//     infoWindow.setContent(browserHasGeolocation ?
-//         'Error: The Geolocation service failed.' :
-//         'Error: Your browser doesn\'t support geolocation.');
-//     infoWindow.open(map);
-// }
-
-// function getStoreInfoById(id) {
-//     var store;
-//     $.getJSON('/rest/api/store/' + id, function (data) {
-//         return data;
-//     });
-// }

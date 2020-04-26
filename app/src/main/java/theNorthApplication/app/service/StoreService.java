@@ -1,7 +1,6 @@
 package theNorthApplication.app.service;
 
 import org.springframework.stereotype.Service;
-import theNorthApplication.app.dto.StoreDto;
 import theNorthApplication.app.dto.StoreEntityDto;
 import theNorthApplication.app.entity.Availability;
 import theNorthApplication.app.entity.Statistic;
@@ -23,11 +22,6 @@ public class StoreService {
     }
 
     public StoreEntityDto findStoreById(String id) {
-        if (id.equals("82113b27a70a22748e7ceaef498b9d351de10ac2")){
-            String dasds =null;
-            String d = dasds + "";
-        }
-
         Optional<Store> store = storeRepository.findById(id);
 
         StoreEntityDto storeEntityDto = storeEntityMapper.mapStoreToDto(store.orElse(null));
