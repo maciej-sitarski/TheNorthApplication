@@ -62,19 +62,27 @@ public class ShopsSearcherParser {
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
 
+//    private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
+//
+//        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s+%s+%s+%s+%s+%s&location=%s,%s&radius=%s&key=%s",
+//                "supermarket",
+//                "grocery_or_supermarket",
+//                "food",
+//                "point_of_interest",
+//                "store",
+//                "establishment",
+//                lat,
+//                lng,
+//                radius,
+//                apiKey);
+//
+//        HttpResponse<String> response = Unirest.get(requestUri).asString();
+//        return objectMapper.readValue(response.getBody(), SearchResults.class);
+//    }
+
     private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
 
-        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s+%s+%s+%s+%s+%s&location=%s,%s&radius=%s&key=%s",
-                "supermarket",
-                "grocery_or_supermarket",
-                "food",
-                "point_of_interest",
-                "store",
-                "establishment",
-                lat,
-                lng,
-                radius,
-                apiKey);
+        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=54.35,18.6667&radius=10000&type=supermarket&key=AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g");
 
         HttpResponse<String> response = Unirest.get(requestUri).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);
