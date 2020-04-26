@@ -98,14 +98,14 @@ function drawMarkers(positionLat, positionLng) {
                 glovesAvailability = "/img/rekawiczkaFalse.png";
             }
 
-            const contentString = '<div id="content">'+
+            const contentString = '<div id="content" class="text-center" style="height: 230px; width: 300px; background-color: #d1efe7">'+
                 '<div id="siteNotice">'+
                 '</div>'+
-                '<h5 id="firstHeading" class="firstHeading">' + stores[i].name + '</h5>'+
+                '<h3 id="firstHeading" class="firstHeading" style="font-family: Montserrat">' + stores[i].name + '</h3>'+
                 '<div id="bodyContent">'+
-                '<p style="display: inline;margin-right: 10px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="42" width="42"></p>'+
-                '<p style="display: inline;margin-right: 10px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="42" width="42"></p>'+
-                '<p style="display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="42" width="42"></p>'+
+                '<p style="display: inline;margin-right: 20px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
+                '<p style="display: inline;margin-right: 20px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
+                '<p style="display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
                 '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
                 '<a class="btn btn-primary d-block" href="/storeDetails?id='+stores[i].id+ '&name='+ name+'&street='+ street+'&town='+ town +'">'+
@@ -115,7 +115,8 @@ function drawMarkers(positionLat, positionLng) {
 
             const infowindow = new google.maps.InfoWindow({
                 content: contentString,
-                maxWidth: 250
+
+
             });
 
             marker.addListener('click', function () {

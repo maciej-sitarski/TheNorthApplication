@@ -23,8 +23,8 @@ function drawChart() {
             chartArea: {width:'100%',height:'100%'},
             fontSize:40,
             slices: {
-                0: { color: '#8ade70' },
-                1: { color: '#ff5757' }
+                0: { color: '#ff5757' },
+                1: { color: '#8ade70' }
             }
         };
         let dataChart1 = google.visualization.arrayToDataTable(
@@ -36,3 +36,7 @@ function drawChart() {
         chart1.draw(dataChart1, options);
     });
 }
+
+$(window).resize(function(){
+    drawChart();
+});

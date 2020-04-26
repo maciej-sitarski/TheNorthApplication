@@ -2,8 +2,13 @@
 
 <div class="container-fluid fill" style="background-color: #d1efe7;">
     <div class="row">
-        <div class="col-lg-6 offset-md-3 text-center" style="margin-top: 2%">
-            <p id="heading"> Znajdz swój sklep</p>
+        <div class="col-1 text-center">
+            <div style="font-size: 4vw;margin-top: 8%;">
+                <a href="javascript:history.back()"  type="button" > <i class="fas fa-arrow-alt-circle-left" style="color: #60a3bc"></i> </a>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-md-2 text-center" style="margin-top: 2%">
+            <p id="heading"> ZNAJDŹ SWÓJ SKLEP</p> <p id="heading" style="font-size: 1.5vw">(Przeszukujemy najpopularniejsze sieci sklepów) </p>
             <form action="/validationOfShops?city=city&shop=shop"
                   method="get">
                 <label id="questions" style="margin-top: 3vw">Wpisz nazwę miasta</label>
@@ -26,9 +31,9 @@
                        </#if>
                 >
                 <button type="submit" id="submitFormButton" style="padding-left: 10%; padding-right: 10%">
-                    <p style="margin-top: 3%">
+
                         <strong>Znajdź sklepy</strong>
-                    </p>
+
                 </button>
             </form>
 
@@ -43,11 +48,11 @@
                 </select>
                 <#if choice == "form">
                     <button id="submitFormButton" onclick="goToForm()" style="padding-left: 10%; padding-right: 10%">
-                        Dalej
+                        <strong>Dalej</strong>
                     </button>
                 <#else>
                     <button id="submitFormButton" onclick="goToShop()" style="padding-left: 10%; padding-right: 10%">
-                        Dalej
+                        <strong>Dalej</strong>
                     </button>
                 </#if>
             <#else>
