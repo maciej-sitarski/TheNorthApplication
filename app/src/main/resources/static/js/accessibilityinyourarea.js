@@ -74,7 +74,10 @@ function drawMarkers(positionLat, positionLng) {
             marker.setIcon(iconPath);
 
             let maskAvailability, gelAvailability, glovesAvailability;
+            let maskPrize, gelPrize, glovesPrize;
+
             if(statStoreFromDatabase.availabilityDto !== null) {
+
                 if (statStoreFromDatabase.availabilityDto.maskAvailability === undefined || statStoreFromDatabase.availabilityDto.maskAvailability === false) {
                     maskAvailability="/img/maseczkaFalse.png";
                 } else {
@@ -93,6 +96,9 @@ function drawMarkers(positionLat, positionLng) {
                     glovesAvailability="/img/rekawiczkaTrue.png";
                 }
             } else {
+                maskPrize = '?';
+                gelPrize = '?';
+                glovesPrize = '?';
                 maskAvailability = "/img/maseczkaFalse.png";
                 gelAvailability = "/img/zelFalse.png";
                 glovesAvailability = "/img/rekawiczkaFalse.png";
@@ -106,6 +112,10 @@ function drawMarkers(positionLat, positionLng) {
                 '<p style="display: inline;margin-right: 20px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
                 '<p style="display: inline;margin-right: 20px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
                 '<p style="display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
+                '<p style="display: inline;margin-right: 20px;">'+maskPrize+' zł'+'</p>'+
+                '<p style="display: inline;margin-right: 20px;">'+gelPrize+' zł'+'</p>'+
+                '<p style="display: inline-block;">'+glovesPrize+' zł'+'</p>'+
+
                 '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
                 '<a class="btn btn-primary d-block" href="/storeDetails?id='+stores[i].id+ '&name='+ name+'&street='+ street+'&town='+ town +'">'+
