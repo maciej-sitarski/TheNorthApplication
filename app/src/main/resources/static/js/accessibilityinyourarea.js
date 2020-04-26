@@ -77,7 +77,6 @@ function drawMarkers(positionLat, positionLng) {
             let maskPrize, gelPrize, glovesPrize;
 
             if(statStoreFromDatabase.availabilityDto !== null) {
-
                 if (statStoreFromDatabase.availabilityDto.maskAvailability === undefined || statStoreFromDatabase.availabilityDto.maskAvailability === false) {
                     maskAvailability="/img/maseczkaFalse.png";
                 } else {
@@ -90,10 +89,26 @@ function drawMarkers(positionLat, positionLng) {
                     gelAvailability="/img/zelTrue.png";
                 }
 
-                if (statStoreFromDatabase.availabilityDto.glovesAvailability === undefined || statStoreFromDatabase.availabilityDto.glovesAvailability === false) {
+                if (statStoreFromDatabase.availabilityDto.glovesAvailability === undefined || statStoreFromDatabase.availabilityDto.glovesPrize === false) {
                     glovesAvailability="/img/rekawiczkaFalse.png";
                 } else {
                     glovesAvailability="/img/rekawiczkaTrue.png";
+                }
+
+                if (statStoreFromDatabase.availabilityDto.maskPrize === undefined || statStoreFromDatabase.availabilityDto.maskPrize === null) {
+                    maskPrize = '?';
+                } else {
+                    maskPrize = statStoreFromDatabase.availabilityDto.maskPrize;
+                }
+                if (statStoreFromDatabase.availabilityDto.gelPrize === undefined || statStoreFromDatabase.availabilityDto.gelPrize === null) {
+                    gelPrize = '?';
+                } else {
+                    gelPrize = statStoreFromDatabase.availabilityDto.gelPrize;
+                }
+                if (statStoreFromDatabase.availabilityDto.glovesPrize === undefined || statStoreFromDatabase.availabilityDto.glovesPrize === null) {
+                    glovesPrize = '?';
+                } else {
+                    glovesPrize = statStoreFromDatabase.availabilityDto.glovesPrize;
                 }
             } else {
                 maskPrize = '?';
@@ -104,17 +119,19 @@ function drawMarkers(positionLat, positionLng) {
                 glovesAvailability = "/img/rekawiczkaFalse.png";
             }
 
-            const contentString = '<div id="content" class="text-center" style="height: 230px; width: 300px; background-color: #d1efe7">'+
+            const contentString = '<div id="content" class="text-center" style="height: 250px; width: 300px; background-color: #d1efe7">'+
                 '<div id="siteNotice">'+
                 '</div>'+
                 '<h3 id="firstHeading" class="firstHeading" style="font-family: Montserrat">' + stores[i].name + '</h3>'+
                 '<div id="bodyContent">'+
                 '<p style="display: inline;margin-right: 20px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
                 '<p style="display: inline;margin-right: 20px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
-                '<p style="display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
-                '<p style="display: inline;margin-right: 20px;">'+maskPrize+' zł'+'</p>'+
-                '<p style="display: inline;margin-right: 20px;">'+gelPrize+' zł'+'</p>'+
-                '<p style="display: inline-block;">'+glovesPrize+' zł'+'</p>'+
+                '<p style="display: inline-block;float: left;clear: left;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
+                '<br/>'+
+                '<br/>'+
+                '<p style="display: inline;margin-right: 20px;text-align: center;height= 80px; width=80px;">'+maskPrize+' zł'+'</p>'+
+                '<p style="display: inline;margin-right: 20px;text-align: center;height= 80px; width=80px;">'+gelPrize+' zł'+'</p>'+
+                '<p style="display: inline-block;text-align: center;height= 80px; width=80px;">'+glovesPrize+' zł'+'</p>'+
 
                 '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
