@@ -9,4 +9,7 @@ public class AvailabilityDto {
     private boolean maskAvailability;
     private boolean glovesAvailability;
     private boolean gelAvailability;
+    private Double maskPrize;
+    private Double glovesPrize;
+    private Double gelPrize;
 }

@@ -30,4 +30,13 @@ public class Availability {
     @Max(value = 3)
     @Min(value = 0)
     private Integer gelAvailability;
+
+    @Column(name="mask_prize")
+    private Double maskPrize;
+
+    @Column(name="mask_prize")
+    private Double glovesPrize;
+
+    @Column(name="gel_prize")
+    private Double gelPrize;
 }

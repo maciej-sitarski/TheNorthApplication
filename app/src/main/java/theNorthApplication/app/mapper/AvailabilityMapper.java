@@ -26,12 +26,27 @@ public class AvailabilityMapper {
                 .map(maskavailability -> maskavailability > 1.5)
                 .orElse(null);
 
+        Double maskPrize = Optional.ofNullable(availability)
+                .map(Availability::getMaskPrize)
+                .orElse(null);
+
+        Double glovesPrize = Optional.ofNullable(availability)
+                .map(Availability::getGlovesPrize)
+                .orElse(null);
+
+        Double gelPrize = Optional.ofNullable(availability)
+                .map(Availability::getGelPrize)
+                .orElse(null);
 
         AvailabilityDto availabilityDto = new AvailabilityDto();
 
         availabilityDto.setGelAvailability(gelAvailability);
         availabilityDto.setGlovesAvailability(glovesAvailability);
         availabilityDto.setMaskAvailability(maskAvailability);
+        availabilityDto.setMaskPrize(maskPrize);
+        availabilityDto.setGlovesPrize(glovesPrize);
+        availabilityDto.setGelPrize(gelPrize);
+
         return availabilityDto;
     }
 }
