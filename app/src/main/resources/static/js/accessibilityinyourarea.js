@@ -11,7 +11,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 55.257532, lng: 18.993839},
-        zoom: 19
+        zoom: 50
     });
     infoWindow = new google.maps.InfoWindow;
 
@@ -37,8 +37,8 @@ function initMap() {
     }
 }
 function drawMarkers(positionLat, positionLng) {
-    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000');
-    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=10000', function (dataset1) {
+    console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=5000');
+    $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=5000', function (dataset1) {
 
         for (var i = 0; i < dataset1.length; i++) {
             var store = dataset1[i];

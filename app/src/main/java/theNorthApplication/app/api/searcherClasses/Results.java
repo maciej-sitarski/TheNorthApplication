@@ -27,4 +27,7 @@ public class Results {
 
     @JsonProperty("types")
     private List<String> types;
+
+    @JsonProperty("vicinity")
+    private String vicinity;
 }

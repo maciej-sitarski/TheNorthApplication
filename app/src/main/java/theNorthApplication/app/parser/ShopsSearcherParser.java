@@ -22,7 +22,7 @@ public class ShopsSearcherParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
 
-    public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException {
+    public SearchResults parseSearch(String shop, String town) throws UnirestException, IOException, InterruptedException {
 
         SearchResults searchResults = getResponseFromApi(shop, town);
         logger.info("Parse searching to objects");
@@ -30,6 +30,7 @@ public class ShopsSearcherParser {
         SearchResults nexPageResult;
 
         while (searchResults.getNextPageToken() != null) {
+            Thread.sleep(1600L);
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
@@ -37,7 +38,7 @@ public class ShopsSearcherParser {
         return searchResults;
     }
 
-    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
+    public SearchResults parseSearchByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException, InterruptedException {
 
         logger.info("Parse searching based on arguments lat={}, lng={}, radius={} is to be done", lat, lng, radius);
 
@@ -46,13 +47,27 @@ public class ShopsSearcherParser {
         SearchResults nexPageResult;
 
         while (searchResults.getNextPageToken() != null) {
+            Thread.sleep(1600L);
             nexPageResult = getNextPageResults(searchResults.getNextPageToken());
             nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
             searchResults.setNextPageToken(nexPageResult.getNextPageToken());
         }
-
         return searchResults;
+    }
 
+    public SearchResults parseSearchByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws IOException, UnirestException, InterruptedException {
+        SearchResults searchResults = getResponseFromApiByCoordinatesAndRadiusByM(lat, lng, radius);
+        logger.info(lat + " and " + lng + " and " + radius);
+
+        SearchResults nexPageResult;
+
+        while (searchResults.getNextPageToken() != null) {
+            Thread.sleep(1600L);
+            nexPageResult = getNextPageResults(searchResults.getNextPageToken());
+            nexPageResult.getResultsList().forEach(results -> searchResults.getResultsList().add(results));
+            searchResults.setNextPageToken(nexPageResult.getNextPageToken());
+        }
+        return searchResults;
     }
 
     private SearchResults getResponseFromApi(String shop, String town) throws UnirestException, IOException {
@@ -62,27 +77,27 @@ public class ShopsSearcherParser {
         return objectMapper.readValue(response.getBody(), SearchResults.class);
     }
 
-//    private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
-//
-//        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s+%s+%s+%s+%s+%s&location=%s,%s&radius=%s&key=%s",
-//                "supermarket",
-//                "grocery_or_supermarket",
-//                "food",
-//                "point_of_interest",
-//                "store",
-//                "establishment",
-//                lat,
-//                lng,
-//                radius,
-//                apiKey);
-//
-//        HttpResponse<String> response = Unirest.get(requestUri).asString();
-//        return objectMapper.readValue(response.getBody(), SearchResults.class);
-//    }
-
     private SearchResults getResponseFromApiByCoordinatesAndRadius(String lat, String lng, String radius) throws UnirestException, IOException {
 
-        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=54.35,18.6667&radius=10000&type=supermarket&key=AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g");
+        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s+%s+%s+%s+%s+%s&location=%s,%s&radius=%s&key=%s",
+                "supermarket",
+                "grocery_or_supermarket",
+                "food",
+                "point_of_interest",
+                "store",
+                "establishment",
+                lat,
+                lng,
+                radius,
+                apiKey);
+
+        HttpResponse<String> response = Unirest.get(requestUri).asString();
+        return objectMapper.readValue(response.getBody(), SearchResults.class);
+    }
+
+    private SearchResults getResponseFromApiByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws UnirestException, IOException {
+
+        String requestUri = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ lat + "," + lng +"&radius="+ radius + "&type=grocery_or_supermarket&key=" + apiKey);
 
         HttpResponse<String> response = Unirest.get(requestUri).asString();
         return objectMapper.readValue(response.getBody(), SearchResults.class);

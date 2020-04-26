@@ -28,7 +28,7 @@ public class SearcherService {
     }
 
 
-    public List<StoreDto> getStoreDtoList(String shop, String town) throws IOException, UnirestException {
+    public List<StoreDto> getStoreDtoList(String shop, String town) throws IOException, UnirestException, InterruptedException {
         List<StoreDto> storesDto = new ArrayList<>();
 
         shopsSearcherParser.parseSearch(shop, town).getResultsList().forEach(results -> {
@@ -39,13 +39,19 @@ public class SearcherService {
         return storesDto;
     }
 
-    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lng, String radius) throws IOException, UnirestException {
+    public List<StoreDto> getStoresByCoordinatesAndRadius(String lat, String lng, String radius) throws IOException, UnirestException, InterruptedException {
         List<StoreDto> storesDto = new ArrayList<>();
 
         shopsSearcherParser.parseSearchByCoordinatesAndRadius(lat, lng, radius).getResultsList().forEach(results -> {
             storesDto.add(searchResultsDtoMapper.mapSearchResultToDto(results));
         });
-
         return storesDto;
+    }
+
+    public List<StoreDto> getStoresByCoordinatesAndRadiusByM(String lat, String lng, String radius) throws InterruptedException, UnirestException, IOException {
+        List<StoreDto> storeDtos = new ArrayList<>();
+        shopsSearcherParser.parseSearchByCoordinatesAndRadiusByM(lat, lng, radius).getResultsList().forEach(results ->
+                storeDtos.add(searchResultsDtoMapper.nearByMapToDto(results)));
+        return storeDtos;
     }
 }
