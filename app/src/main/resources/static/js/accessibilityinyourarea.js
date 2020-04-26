@@ -129,9 +129,9 @@ function drawMarkers(positionLat, positionLng) {
                 '<p style="display: inline-block;float: left;clear: left;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
                 '<br/>'+
                 '<br/>'+
-                '<p style="display: inline;margin-right: 20px;text-align: center;height= 80px; width=80px;">'+maskPrize+' zł'+'</p>'+
-                '<p style="display: inline;margin-right: 20px;text-align: center;height= 80px; width=80px;">'+gelPrize+' zł'+'</p>'+
-                '<p style="display: inline-block;text-align: center;height= 80px; width=80px;">'+glovesPrize+' zł'+'</p>'+
+                '<div style="display: inline-block;margin-right: 20px;text-align: center; width=30%;"><p>'+maskPrize+' zł'+'</p></div>'+
+                '<div style="display: inline-block;margin-right: 20px;text-align: center; width=30%;"><p>'+gelPrize+' zł'+'</p></div>'+
+                '<div style="display: inline-block;text-align: center; width=30%;"><p>'+glovesPrize+' zł'+'</p></div>'+
 
                 '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
