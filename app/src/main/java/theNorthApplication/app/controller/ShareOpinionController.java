@@ -35,14 +35,10 @@ public class ShareOpinionController {
         Map<String, Object> params = new HashMap<>();
         String id = req.getParameter("id");
         String queueTrue = req.getParameter("queueTrue");
-        String queueFalse = req.getParameter("queueFalse");
         String maskTrue = req.getParameter("maskTrue");
-        String maskFalse = req.getParameter("maskFalse");
         String glovesTrue = req.getParameter("glovesTrue");
-        String glovesFalse = req.getParameter("glovesFalse");
         String gelTrue = req.getParameter("gelTrue");
-        String gelFalse = req.getParameter("gelFalse");
-        storeService.saveUpdateStoreAndAvalibility(id,queueTrue,queueFalse,maskTrue,maskFalse,glovesTrue,glovesFalse,gelTrue,gelFalse);
+        storeService.saveUpdateStoreAndAvalibility(id,queueTrue,maskTrue,glovesTrue,gelTrue);
         return new ModelAndView("shareOpinionPositive", params);
     }
 }

@@ -24,11 +24,11 @@
         <div class="row" style="height: 60%">
             <div class="col-md-6  text-center">
                 <p id="shopBody">Procentowa szansa, że utkniesz w kolejce</p>
-
-                <a href="#" type="button" id="submitFormButton"
+                <input type="hidden" id="idShop" value="${id}">
+                <button onclick="goToForm2()"  id="submitFormButton"
                    style="text-decoration: none !important; margin-top: 10%; padding-left: 7%;padding-right: 7%">
                     Podziel się aktualnymi informacjami!
-                </a>
+                </button>
             </div>
             <div class="col-md-6  text-center">
                 <p id="shopBody">Dostepność produktów</p>
