@@ -18,13 +18,13 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-center" style="margin-top: 4%">
-                    <img src="img/rękawiczka.png" class="img-fluid" alt="Responsive image"  style="max-width: 80%; height: auto;">
+                    <img src="img/rekawiczka.png" class="img-fluid" alt="Responsive image" style="max-width: 80%; height: auto;">
                     <div class="form-check text-center ">
                         <input class=" position-static " name="isProtectiveGlovesNeeded" type="checkbox"  style="height: 2.5vw; width: 2.5vw; margin-top: 7%">
                     </div>
                 </div>
                 <div class="col-lg-4 text-center" style="margin-top: 3%">
-                    <img src="img/żel.png" class="img-fluid" alt="Responsive image"  style="max-width: 80%; height: auto;">
+                    <img src="img/zel.png" class="img-fluid" alt="Responsive image" style="max-width: 80%; height: auto;">
                     <div class="checkbox checkbox-circle checkbox-red ">
                         <input  class=" position-static " name="isDisinfectantNeeded" type="checkbox"  style="height: 2.5vw; width: 2.5vw; margin-top: 7%">
                     </div>

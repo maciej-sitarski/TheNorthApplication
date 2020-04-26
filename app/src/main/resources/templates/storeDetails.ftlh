@@ -44,19 +44,19 @@
 
                 <div>
                     <#if gloves == true>
-                        <img src="img/rękawiczkaTrue.png" class="img-fluid" alt="Responsive image"
+                        <img src="img/rekawiczkaTrue.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     <#else >
-                        <img src="img/rękawiczkaFalse.png" class="img-fluid" alt="Responsive image"
+                        <img src="img/rekawiczkaFalse.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     </#if>
                 </div>
                 <div>
                     <#if gel == true>
-                    <img src="img/żelTrue.png" class="img-fluid" alt="Responsive image"
+                    <img src="img/zelTrue.png" class="img-fluid" alt="Responsive image"
                          style="max-width: 25%; height: auto">
                     <#else>
-                        <img src="img/żelFalse.png" class="img-fluid" alt="Responsive image"
+                        <img src="img/zelFalse.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     </#if>
                 </div>
