@@ -28,7 +28,7 @@ public class StoreService {
         return storeEntityDto;
     }
 
-    public void saveUpdateStoreAndAvalibility(String id, String queueTrue, String maskTrue, String glovesTrue, String gelTrue){
+    public void saveUpdateStoreAndAvalibility(String id, String queueTrue, String maskTrue, String glovesTrue, String gelTrue, String maskPrize,String glovesPrize, String gelPrize){
         StoreEntityDto storeEntityDto = findStoreById(id);
         if(storeEntityDto.getId()!=null){
             Store store = storeRepository.findById(id).orElseThrow();
@@ -90,6 +90,30 @@ public class StoreService {
                 }
             }
 
+            if(maskPrize!=null && !maskPrize.equals("")){
+                try {
+                    availability.setMaskPrize(Double.parseDouble(maskPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
+            if(glovesPrize!=null && !glovesPrize.equals("")){
+                try {
+                    availability.setGlovesPrize(Double.parseDouble(glovesPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
+            if(gelPrize!=null && !gelPrize.equals("")){
+                try {
+                    availability.setGelPrize(Double.parseDouble(gelPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
             store.setStatistic(statistic);
             store.setAvailability(availability);
             storeRepository.save(store);
@@ -140,6 +164,31 @@ public class StoreService {
             } else {
                 availability.setGelAvailability(0);
             }
+
+            if(maskPrize!=null && !maskPrize.equals("")){
+                try {
+                    availability.setMaskPrize(Double.parseDouble(maskPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
+            if(glovesPrize!=null && !glovesPrize.equals("")){
+                try {
+                    availability.setGlovesPrize(Double.parseDouble(glovesPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
+            if(gelPrize!=null && !gelPrize.equals("")){
+                try {
+                    availability.setGelPrize(Double.parseDouble(gelPrize.replaceAll(",", ".")));
+                } catch (Exception ignored){
+
+                }
+            }
+
             store.setAvailability(availability);
 
             storeRepository.save(store);

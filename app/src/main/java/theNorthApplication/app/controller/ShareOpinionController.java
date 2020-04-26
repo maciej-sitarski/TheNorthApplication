@@ -3,7 +3,6 @@ package theNorthApplication.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import theNorthApplication.app.service.StoreService;
 
@@ -38,7 +37,10 @@ public class ShareOpinionController {
         String maskTrue = req.getParameter("maskTrue");
         String glovesTrue = req.getParameter("glovesTrue");
         String gelTrue = req.getParameter("gelTrue");
-        storeService.saveUpdateStoreAndAvalibility(id,queueTrue,maskTrue,glovesTrue,gelTrue);
+        String maskPrize = req.getParameter("maskPrice");
+        String glovesPrize = req.getParameter("glovesPrice");
+        String gelPrize = req.getParameter("gelPrice");
+        storeService.saveUpdateStoreAndAvalibility(id,queueTrue,maskTrue,glovesTrue,gelTrue,maskPrize,glovesPrize,gelPrize);
         return new ModelAndView("shareOpinionPositive", params);
     }
 }
