@@ -11,10 +11,11 @@
             <div class="col-md-12  text-center">
                 <p id="shopBody" style="margin-top: 10%">Niestety w naszej bazie nie ma jeszcze informacji o Twoim
                     sklepie :(</p>
-                <a href="/shareopinion/${id}" type="button" id="submitFormButton"
+                <input type="hidden" id="idShop" value="${id}">
+                <button onclick="goToForm2()" id="submitFormButton"
                    style="text-decoration: none !important; margin-top: 5%; padding-left: 7%;padding-right: 7%">
                     Lecz wspomóż naszą aplikacje i podziel się opinią!
-                </a>
+                </button>
             </div>
         </div>
 
@@ -32,7 +33,7 @@
             <div class="col-md-6  text-center">
                 <p id="shopBody">Dostepność produktów</p>
                 <div>
-                    <#if mask == true>
+                    <#if mask?has_content>
                         <img src="img/maseczkaTrue.png" class="img-fluid " alt="Responsive image"
                              style="max-width: 25%; height: auto;">
                     <#else >
@@ -43,7 +44,7 @@
                 </div>
 
                 <div>
-                    <#if gloves == true>
+                    <#if gloves?has_content>
                         <img src="img/rękawiczkaTrue.png" class="img-fluid" alt="Responsive image"
                              style="max-width: 25%; height: auto">
                     <#else >
@@ -52,7 +53,7 @@
                     </#if>
                 </div>
                 <div>
-                    <#if gel == true>
+                    <#if gel?has_content>
                     <img src="img/żelTrue.png" class="img-fluid" alt="Responsive image"
                          style="max-width: 25%; height: auto">
                     <#else>

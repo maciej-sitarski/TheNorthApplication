@@ -23,7 +23,15 @@ public class StoreService {
     }
 
     public void saveUpdateStoreAndAvalibility(String id, String queueTrue,String queueFalse, String maskTrue,String maskFalse, String glovesTrue,String glovesFalse, String gelTrue,String gelFalse){
+        StoreEntityDto storeEntityDto = findStoreById(id);
+        if(storeEntityDto!=null){
 
+        } else {
+            Store store = new Store();
+//            store.setId(id);
+//            store.set
+//            storeRepository.save(storeEntityDto1);
+        }
     }
 
 }
