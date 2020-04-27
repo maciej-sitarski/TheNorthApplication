@@ -123,21 +123,20 @@ function drawMarkers(positionLat, positionLng) {
                 '<div id="siteNotice">'+
                 '</div>'+
                 '<h3 id="firstHeading" class="firstHeading" style="font-family: Montserrat">' + stores[i].name + '</h3>'+
-                '<div id="bodyContent">'+
-                '<p style="display: inline;margin-right: 20px;"><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
-                '<p style="display: inline;margin-right: 20px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
-                '<p style="display: inline-block;float: left;clear: left;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
+                // '<div id="bodyContent">'+
+                '<p style="display: inline; "><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
+                '<p style="display: inline;margin-left: 15px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
+                '<p style="margin-left: 15px;display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
                 '<br/>'+
-                '<br/>'+
-                '<div style="display: inline-block;margin-right: 20px;text-align: center; width=30%;"><p>'+maskPrize+' zł'+'</p></div>'+
-                '<div style="display: inline-block;margin-right: 20px;text-align: center; width=30%;"><p>'+gelPrize+' zł'+'</p></div>'+
-                '<div style="display: inline-block;text-align: center; width=30%;"><p>'+glovesPrize+' zł'+'</p></div>'+
+                '<div style="display: inline-block;margin-right: 70px; "><p>'+maskPrize+' zł'+'</p></div>'+
+                '<div style="display: inline-block;margin-right: 70px;"><p>'+gelPrize+' zł'+'</p></div>'+
+                '<div style="display: inline-block;"><p>'+glovesPrize+' zł'+'</p></div>'+
 
                 '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
                 'Podziel się opinią :)</a> '+
                 '<a class="btn btn-primary d-block" href="/storeDetails?id='+stores[i].id+ '&name='+ name+'&street='+ street+'&town='+ town +'">'+
                 'Przejdz do sklepu</a> '+
-                '</div>'+
+                // '</div>'+
                 '</div>';
 
             const infowindow = new google.maps.InfoWindow({
