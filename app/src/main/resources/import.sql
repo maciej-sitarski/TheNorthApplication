@@ -954,7 +954,7 @@ INSERT INTO availability (mask_availability, gloves_availability, gel_availabili
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (3,2,1,2.5,1,9.5);
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (1,2,3,4.5,1,10.5);
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (2,2,2,2.5,1,9.5);
-INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (2,1,2,2.5,1,9.5);
+INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (3,3,2,2.5,1,9.5);
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (2,2,1,2.5,1,9.5);
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (2,1,1,2.5,1,9.5);
 INSERT INTO availability (mask_availability, gloves_availability, gel_availability, mask_prize, gloves_prize, gel_prize) VALUES (1,2,1,2.5,1,9.5);
