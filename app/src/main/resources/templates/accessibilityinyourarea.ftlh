@@ -1,11 +1,4 @@
 <#include "structure.ftlh">
-<#--<div class="container-fluid" style="background-color: #d7fbf1">-->
-<#--    <div class="row" >-->
-<#--        <div style="font-size: 4vw; margin-left: auto; margin-right: auto">-->
-<#--            <a href="javascript:history.back()"  type="button" > <i class="fas fa-arrow-alt-circle-left" style="color: #60a3bc"></i> </a>-->
-<#--        </div>-->
-<#--    </div>-->
-<#--</div>-->
 
 <div id="map"></div>
 <script src="./js/accessibilityinyourarea.js"></script>

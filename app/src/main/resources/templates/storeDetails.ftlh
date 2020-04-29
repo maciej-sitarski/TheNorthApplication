@@ -1,5 +1,4 @@
 <#include "structure.ftlh">
-
 <div class="container-fluid fill" style="background-color: #d1efe7;">
     <div class="row" style="height: 15%">
         <div class="col-1 text-center">
@@ -25,7 +24,6 @@
             </button>
         </div>
     </div>
-
     <#else >
     <div class="row">
         <div class="col-10 offset-1">
@@ -85,7 +83,6 @@
                         </#if>
                     </div>
                     <div style="margin-top: 5%"></div>
-
                     <div style=" display: inline;">
                         <#if gel?has_content>
                             <img src="img/zelTrue.png" class="img-fluid" alt="Responsive image"

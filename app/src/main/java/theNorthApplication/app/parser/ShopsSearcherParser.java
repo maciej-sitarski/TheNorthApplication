@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,12 @@ import java.util.List;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShopsSearcherParser {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private final ShopsNamesService shopsNamesService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
+    private final String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
 
+    @Autowired
     public ShopsSearcherParser(ShopsNamesService shopsNamesService) {
         this.shopsNamesService = shopsNamesService;
     }

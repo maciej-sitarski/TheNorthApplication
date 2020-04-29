@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Data
-@Table(name="availability")
+@Table(name = "availability")
 public class Availability {
 
     @Id
@@ -16,27 +16,27 @@ public class Availability {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="mask_availability")
+    @Column(name = "mask_availability")
     @Max(value = 3)
     @Min(value = 0)
     private Integer maskAvailability;
 
-    @Column(name="gloves_availability")
+    @Column(name = "gloves_availability")
     @Max(value = 3)
     @Min(value = 0)
     private Integer glovesAvailability;
 
-    @Column(name="gel_availability")
+    @Column(name = "gel_availability")
     @Max(value = 3)
     @Min(value = 0)
     private Integer gelAvailability;
 
-    @Column(name="mask_prize")
+    @Column(name = "mask_prize")
     private Double maskPrize;
 
-    @Column(name="gloves_prize")
+    @Column(name = "gloves_prize")
     private Double glovesPrize;
 
-    @Column(name="gel_prize")
+    @Column(name = "gel_prize")
     private Double gelPrize;
 }

@@ -20,6 +20,4 @@ public class Locations {
 
     @Column(name = "province")
     private String province;
-
-
 }

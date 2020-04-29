@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Data
-@Table(name="statistic")
+@Table(name = "statistic")
 public class Statistic {
 
     @Id
@@ -16,9 +16,8 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="queue_size")
+    @Column(name = "queue_size")
     @Max(value = 3)
     @Min(value = 0)
     private Integer queueSize;
-
 }

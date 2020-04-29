@@ -24,34 +24,35 @@ public class StoreDetailsController {
     @GetMapping("/storeDetails")
     public ModelAndView getStoreDetails(HttpServletRequest req) {
         Map<String, Object> params = new HashMap<>();
+
         String id = req.getParameter("id");
         String name = req.getParameter("name");
         String street = req.getParameter("street");
         String town = req.getParameter("town");
 
         StoreEntityDto storeEntityDto = storeService.findStoreById(id);
-        if(storeEntityDto.getId() != null) {
-            if(storeEntityDto.getAvailabilityDto().isMaskAvailability()){
+        if (storeEntityDto.getId() != null) {
+            if (storeEntityDto.getAvailabilityDto().isMaskAvailability()) {
                 params.put("mask", "mask");
             }
-            if(storeEntityDto.getAvailabilityDto().isGlovesAvailability()){
+            if (storeEntityDto.getAvailabilityDto().isGlovesAvailability()) {
                 params.put("gloves", "gloves");
             }
-            if(storeEntityDto.getAvailabilityDto().isGelAvailability()){
+            if (storeEntityDto.getAvailabilityDto().isGelAvailability()) {
                 params.put("gel", "gel");
             }
-            if(storeEntityDto.getAvailabilityDto().getMaskPrize()!=null){
+            if (storeEntityDto.getAvailabilityDto().getMaskPrize() != null) {
                 params.put("maskPrice", storeEntityDto.getAvailabilityDto().getMaskPrize());
             }
-            if(storeEntityDto.getAvailabilityDto().getGlovesPrize()!=null){
+            if (storeEntityDto.getAvailabilityDto().getGlovesPrize() != null) {
                 params.put("glovesPrice", storeEntityDto.getAvailabilityDto().getGlovesPrize());
             }
-            if(storeEntityDto.getAvailabilityDto().getGelPrize()!=null){
+            if (storeEntityDto.getAvailabilityDto().getGelPrize() != null) {
                 params.put("gelPrice", storeEntityDto.getAvailabilityDto().getGelPrize());
             }
 
 
-        }else{
+        } else {
             params.put("noData", "noData");
         }
         params.put("id", id);
