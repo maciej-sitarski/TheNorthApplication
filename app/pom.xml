@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>theNorthApplication</groupId>
 	<artifactId>app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>app</name>
 	<description> Social app to fight the effects of coronovirus</description>
 
