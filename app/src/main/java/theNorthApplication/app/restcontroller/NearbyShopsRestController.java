@@ -17,18 +17,14 @@ import java.util.stream.Collectors;
 @RestController
 public class NearbyShopsRestController {
 
-    @Autowired
-    private SearcherService searcherService;
+    private final SearcherService searcherService;
+    private final StoreService storeService;
 
     @Autowired
-    private StoreService storeService;
-
-//    @GetMapping("/rest/api/nearbyshops")
-//    public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,
-//                                         @RequestParam("lng") String lng,
-//                                         @RequestParam("radius") String radius) throws IOException, UnirestException, InterruptedException {
-//        return searcherService.getStoresByCoordinatesAndRadius(lat, lng, radius);
-//    }
+    public NearbyShopsRestController(SearcherService searcherService, StoreService storeService) {
+        this.searcherService = searcherService;
+        this.storeService = storeService;
+    }
 
     @GetMapping("/rest/api/nearbyshops")
     public List<StoreDto> getNearbyShops(@RequestParam("lat") String lat,

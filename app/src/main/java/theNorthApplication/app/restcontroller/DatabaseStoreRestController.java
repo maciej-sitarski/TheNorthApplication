@@ -10,8 +10,12 @@ import theNorthApplication.app.service.StoreService;
 @RestController
 public class DatabaseStoreRestController {
 
+    private final StoreService storeService;
+
     @Autowired
-    private StoreService storeService;
+    public DatabaseStoreRestController(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     @GetMapping("/rest/api/store/{id}")
     public StoreEntityDto getDatabaseStoreById(@PathVariable("id") String id) {

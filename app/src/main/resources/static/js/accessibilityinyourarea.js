@@ -21,7 +21,7 @@ function initMap() {
     });
 
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -31,13 +31,14 @@ function initMap() {
 
             drawMarkers(position.coords.latitude, position.coords.longitude);
 
-        }, function() {
+        }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
+
 function drawMarkers(positionLat, positionLng) {
     console.log('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=2000');
     $.getJSON('/rest/api/nearbyshops?lat=' + positionLat.toString() + '&lng=' + positionLng.toString() + '&radius=2000', function (dataset1) {
@@ -61,38 +62,38 @@ function drawMarkers(positionLat, positionLng) {
             console.log(statStoreFromDatabase);
 
             let iconPath;
-            if(statStoreFromDatabase.availabilityDto===null){
+            if (statStoreFromDatabase.availabilityDto === null) {
                 iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
-            } else if((statStoreFromDatabase.availabilityDto.maskAvailability===isMaskNeeded || statStoreFromDatabase.availabilityDto.maskAvailability===true) &&
-                      (statStoreFromDatabase.availabilityDto.glovesAvailability===isProtectiveGlovesNeeded || statStoreFromDatabase.availabilityDto.maskAvailability===true) &&
-                      (statStoreFromDatabase.availabilityDto.gelAvailability===isDisinfectantNeeded || statStoreFromDatabase.availabilityDto.maskAvailability===true)) {
-               iconPath = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+            } else if ((statStoreFromDatabase.availabilityDto.maskAvailability === isMaskNeeded || statStoreFromDatabase.availabilityDto.maskAvailability === true) &&
+                (statStoreFromDatabase.availabilityDto.glovesAvailability === isProtectiveGlovesNeeded || statStoreFromDatabase.availabilityDto.maskAvailability === true) &&
+                (statStoreFromDatabase.availabilityDto.gelAvailability === isDisinfectantNeeded || statStoreFromDatabase.availabilityDto.maskAvailability === true)) {
+                iconPath = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
             } else {
-               iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+                iconPath = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
             }
-            const marker = new google.maps.Marker({position: markerCoordinates,title: stores[i].name, map: map});
+            const marker = new google.maps.Marker({position: markerCoordinates, title: stores[i].name, map: map});
             marker.setIcon(iconPath);
 
             let maskAvailability, gelAvailability, glovesAvailability;
             let maskPrize, gelPrize, glovesPrize;
 
-            if(statStoreFromDatabase.availabilityDto !== null) {
+            if (statStoreFromDatabase.availabilityDto !== null) {
                 if (statStoreFromDatabase.availabilityDto.maskAvailability === undefined || statStoreFromDatabase.availabilityDto.maskAvailability === false) {
-                    maskAvailability="/img/maseczkaFalse.png";
+                    maskAvailability = "/img/maseczkaFalse.png";
                 } else {
-                    maskAvailability="/img/maseczkaTrue.png";
+                    maskAvailability = "/img/maseczkaTrue.png";
                 }
 
                 if (statStoreFromDatabase.availabilityDto.gelAvailability === undefined || statStoreFromDatabase.availabilityDto.gelAvailability === false) {
-                    gelAvailability="/img/zelFalse.png";
+                    gelAvailability = "/img/zelFalse.png";
                 } else {
-                    gelAvailability="/img/zelTrue.png";
+                    gelAvailability = "/img/zelTrue.png";
                 }
 
                 if (statStoreFromDatabase.availabilityDto.glovesAvailability === undefined || statStoreFromDatabase.availabilityDto.glovesPrize === false) {
-                    glovesAvailability="/img/rekawiczkaFalse.png";
+                    glovesAvailability = "/img/rekawiczkaFalse.png";
                 } else {
-                    glovesAvailability="/img/rekawiczkaTrue.png";
+                    glovesAvailability = "/img/rekawiczkaTrue.png";
                 }
 
                 if (statStoreFromDatabase.availabilityDto.maskPrize === undefined || statStoreFromDatabase.availabilityDto.maskPrize === null) {
@@ -119,23 +120,23 @@ function drawMarkers(positionLat, positionLng) {
                 glovesAvailability = "/img/rekawiczkaFalse.png";
             }
 
-            const contentString = '<div id="content" class="text-center" style="height: 250px; width: 300px; background-color: #d1efe7">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h3 id="firstHeading" class="firstHeading" style="font-family: Montserrat">' + stores[i].name + '</h3>'+
+            const contentString = '<div id="content" class="text-center" style="height: 250px; width: 300px; background-color: #d1efe7">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h3 id="firstHeading" class="firstHeading" style="font-family: Montserrat">' + stores[i].name + '</h3>' +
                 // '<div id="bodyContent">'+
-                '<p style="display: inline; "><img src='+maskAvailability+' alt="Dostępnosc maseczek" height="80" width="80"></p>'+
-                '<p style="display: inline;margin-left: 15px;"><img src='+gelAvailability+' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>'+
-                '<p style="margin-left: 15px;display: inline-block;"><img src='+glovesAvailability+' alt="Dostępnosc rekawiczek" height="80" width="80"></p>'+
-                '<br/>'+
-                '<div style="display: inline-block;margin-right: 70px; "><p>'+maskPrize+' zł'+'</p></div>'+
-                '<div style="display: inline-block;margin-right: 70px;"><p>'+gelPrize+' zł'+'</p></div>'+
-                '<div style="display: inline-block;"><p>'+glovesPrize+' zł'+'</p></div>'+
+                '<p style="display: inline; "><img src=' + maskAvailability + ' alt="Dostępnosc maseczek" height="80" width="80"></p>' +
+                '<p style="display: inline;margin-left: 15px;"><img src=' + gelAvailability + ' alt="Dostępnosc plynu dezynfekujacego" height="80" width="80"></p>' +
+                '<p style="margin-left: 15px;display: inline-block;"><img src=' + glovesAvailability + ' alt="Dostępnosc rekawiczek" height="80" width="80"></p>' +
+                '<br/>' +
+                '<div style="display: inline-block;margin-right: 70px; "><p>' + maskPrize + ' zł' + '</p></div>' +
+                '<div style="display: inline-block;margin-right: 70px;"><p>' + gelPrize + ' zł' + '</p></div>' +
+                '<div style="display: inline-block;"><p>' + glovesPrize + ' zł' + '</p></div>' +
 
-                '<a class="btn btn-info d-block mb-1" href="/shareopinion?id='+stores[i].id+'">'+
-                'Podziel się opinią :)</a> '+
-                '<a class="btn btn-primary d-block" href="/storeDetails?id='+stores[i].id+ '&name='+ name+'&street='+ street+'&town='+ town +'">'+
-                'Przejdz do sklepu</a> '+
+                '<a class="btn btn-info d-block mb-1" href="/shareopinion?id=' + stores[i].id + '">' +
+                'Podziel się opinią :)</a> ' +
+                '<a class="btn btn-primary d-block" href="/storeDetails?id=' + stores[i].id + '&name=' + name + '&street=' + street + '&town=' + town + '">' +
+                'Przejdz do sklepu</a> ' +
                 // '</div>'+
                 '</div>';
 

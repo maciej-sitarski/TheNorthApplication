@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import theNorthApplication.app.dto.Questionnaire;
 import theNorthApplication.app.service.StoreService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +22,6 @@ public class ShareOpinionController {
         this.storeService = storeService;
     }
 
-
     @GetMapping("/shareopinion")
     public ModelAndView getHomeView(HttpServletRequest req) {
         Map<String, Object> params = new HashMap<>();
@@ -30,17 +31,9 @@ public class ShareOpinionController {
     }
 
     @GetMapping("/shareopinionsucces")
-    public ModelAndView getSuccessOpinionView(HttpServletRequest req) {
+    public ModelAndView getSuccessOpinionView(@Valid Questionnaire questionnaire) {
         Map<String, Object> params = new HashMap<>();
-        String id = req.getParameter("id");
-        String queueTrue = req.getParameter("queueTrue");
-        String maskTrue = req.getParameter("maskTrue");
-        String glovesTrue = req.getParameter("glovesTrue");
-        String gelTrue = req.getParameter("gelTrue");
-        String maskPrize = req.getParameter("maskPrice");
-        String glovesPrize = req.getParameter("glovesPrice");
-        String gelPrize = req.getParameter("gelPrice");
-        storeService.saveUpdateStoreAndAvalibility(id,queueTrue,maskTrue,glovesTrue,gelTrue,maskPrize,glovesPrize,gelPrize);
+        storeService.saveUpdateStoreAndAvalibility(questionnaire);
         return new ModelAndView("shareOpinionPositive", params);
     }
 }

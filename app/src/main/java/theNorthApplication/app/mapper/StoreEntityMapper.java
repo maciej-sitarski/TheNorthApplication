@@ -1,5 +1,6 @@
 package theNorthApplication.app.mapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import theNorthApplication.app.dto.AvailabilityDto;
 import theNorthApplication.app.dto.StatisticDto;
@@ -14,6 +15,7 @@ public class StoreEntityMapper {
     private final StatisticMapper statisticMapper;
     private final AvailabilityMapper availabilityMapper;
 
+    @Autowired
     public StoreEntityMapper(StatisticMapper statisticMapper, AvailabilityMapper availabilityMapper) {
         this.statisticMapper = statisticMapper;
         this.availabilityMapper = availabilityMapper;

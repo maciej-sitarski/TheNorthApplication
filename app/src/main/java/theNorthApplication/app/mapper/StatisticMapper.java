@@ -25,6 +25,7 @@ public class StatisticMapper {
 
         statisticDto.setId(id);
         statisticDto.setQueueSize(queueSize);
+
         return statisticDto;
     }
 }

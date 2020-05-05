@@ -11,7 +11,6 @@
 
 }
 
-
 .form-check-input {
     width: 50%;
     height: 50%;
@@ -31,6 +30,7 @@
     font-size: 1.5vw;
     margin-top: 2vw;
 }
+
 #submitFormButton:hover {
     color: #a4ffce !important;
     font-weight: 500 !important;
@@ -40,6 +40,7 @@
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.3s ease 0s;
 }
+
 #submitFormButton:focus{
     outline: none;
 }

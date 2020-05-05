@@ -38,12 +38,15 @@ public class SearchStoresController {
     @GetMapping("/searchStore")
     public ModelAndView getHomeView(HttpServletRequest req) {
         Map<String, Object> params = new HashMap<>();
+
         String choice = req.getParameter("choice");
-        if(choice.equals("form")){
-          req.getSession().setAttribute("choice", "form");
-        } else{
-            req.getSession().setAttribute("choice", "shopDetails");
+
+        if (choice.equals("form")) {
+            params.put("choice", "form");
+        } else {
+            params.put("choice", "shopDetails");
         }
+
         return new ModelAndView("searchStoreView", params);
     }
 
@@ -63,16 +66,21 @@ public class SearchStoresController {
     @GetMapping("/validationOfShops")
     public ModelAndView getSpecificStores(HttpServletRequest req) throws IOException, UnirestException, InterruptedException {
         Map<String, Object> params = new HashMap<>();
+
         String city = req.getParameter("city");
         String shop = req.getParameter("shop");
-        String choice = (String)req.getSession().getAttribute("choice");
+        String choice = req.getParameter("choice");
 
         if (townService.checkAvailabilityOfTown(city) && shopsNamesService.checkAvailabilityOfShop(shop)) {
-            List<StoreDto> storeDtoList = searcherService.getStoreDtoList(shop, city).stream().filter(storeDto -> storeDto.getName().toLowerCase().startsWith(shop.toLowerCase().substring(0, 2))).collect(Collectors.toList());
+            List<StoreDto> storeDtoList = searcherService.getStoreDtoList(shop, city).stream()
+                    .filter(storeDto -> storeDto.getName().toLowerCase().startsWith(shop.toLowerCase().substring(0, 2)))
+                    .collect(Collectors.toList());
+
             params.put("listOfStores", storeDtoList);
             params.put("city", city);
             params.put("shop", shop);
-            if(choice.equals("form")){
+
+            if (choice.equals("form")) {
                 params.put("choice", "form");
             } else {
                 params.put("choice", "shopDetails");
@@ -84,5 +92,4 @@ public class SearchStoresController {
         }
         return new ModelAndView("searchStoreView2", params);
     }
-
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="store")
+@Table(name = "store")
 public class Store {
 
     @Id
@@ -20,5 +20,4 @@ public class Store {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "statistic_id", unique = true)
     private Statistic statistic;
-
 }

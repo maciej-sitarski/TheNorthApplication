@@ -6,6 +6,7 @@ import lombok.Data;
 import theNorthApplication.app.api.searcherClasses.Results;
 
 import java.util.List;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResults {

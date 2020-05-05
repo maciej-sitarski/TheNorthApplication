@@ -3,6 +3,7 @@ package theNorthApplication.app.service;
 import org.springframework.stereotype.Service;
 import theNorthApplication.app.dto.StoreEntityDto;
 import theNorthApplication.app.entity.Availability;
+import theNorthApplication.app.dto.Questionnaire;
 import theNorthApplication.app.entity.Statistic;
 import theNorthApplication.app.entity.Store;
 import theNorthApplication.app.mapper.StoreEntityMapper;
@@ -28,88 +29,88 @@ public class StoreService {
         return storeEntityDto;
     }
 
-    public void saveUpdateStoreAndAvalibility(String id, String queueTrue, String maskTrue, String glovesTrue, String gelTrue, String maskPrize,String glovesPrize, String gelPrize){
-        StoreEntityDto storeEntityDto = findStoreById(id);
-        if(storeEntityDto.getId()!=null){
-            Store store = storeRepository.findById(id).orElseThrow();
+    public void saveUpdateStoreAndAvalibility(Questionnaire questionnaire) {
+        StoreEntityDto storeEntityDto = findStoreById(questionnaire.getId());
+        if (storeEntityDto.getId() != null) {
+            Store store = storeRepository.findById(questionnaire.getId()).orElseThrow();
             Statistic statistic = store.getStatistic();
             Availability availability = store.getAvailability();
-            if(queueTrue!=null){
-                if(queueTrue.equals("true")){
-                    if(statistic.getQueueSize()<3){
-                        Integer size = statistic.getQueueSize()+1;
+            if (questionnaire.getQueueTrue() != null) {
+                if (questionnaire.getQueueTrue().equals("true")) {
+                    if (statistic.getQueueSize() < 3) {
+                        Integer size = statistic.getQueueSize() + 1;
                         statistic.setQueueSize(size);
                     }
-                } else{
-                    if(statistic.getQueueSize()>0){
-                        Integer size = statistic.getQueueSize()-1;
+                } else {
+                    if (statistic.getQueueSize() > 0) {
+                        Integer size = statistic.getQueueSize() - 1;
                         statistic.setQueueSize(size);
                     }
                 }
             }
 
-            if(maskTrue!=null){
-                if(maskTrue.equals("true")){
-                    if(availability.getMaskAvailability()<3){
-                        Integer size = availability.getMaskAvailability()+1;
+            if (questionnaire.getMaskTrue() != null) {
+                if (questionnaire.getMaskTrue().equals("true")) {
+                    if (availability.getMaskAvailability() < 3) {
+                        Integer size = availability.getMaskAvailability() + 1;
                         availability.setMaskAvailability(size);
                     }
-                } else{
-                    if(availability.getMaskAvailability()>0){
-                        Integer size = availability.getMaskAvailability()-1;
+                } else {
+                    if (availability.getMaskAvailability() > 0) {
+                        Integer size = availability.getMaskAvailability() - 1;
                         availability.setMaskAvailability(size);
                     }
                 }
             }
 
-            if(glovesTrue!=null){
-                if(glovesTrue.equals("true")){
-                    if(availability.getGlovesAvailability()<3){
-                        Integer size = availability.getGlovesAvailability()+1;
+            if (questionnaire.getGlovesTrue() != null) {
+                if (questionnaire.getGlovesTrue().equals("true")) {
+                    if (availability.getGlovesAvailability() < 3) {
+                        Integer size = availability.getGlovesAvailability() + 1;
                         availability.setGlovesAvailability(size);
                     }
-                } else{
-                    if(availability.getGlovesAvailability()>0){
-                        Integer size = availability.getGlovesAvailability()-1;
+                } else {
+                    if (availability.getGlovesAvailability() > 0) {
+                        Integer size = availability.getGlovesAvailability() - 1;
                         availability.setGlovesAvailability(size);
                     }
                 }
             }
 
-            if(gelTrue!=null){
-                if(gelTrue.equals("true")){
-                    if(availability.getGelAvailability()<3){
-                        Integer size = availability.getGelAvailability()+1;
+            if (questionnaire.getGelTrue() != null) {
+                if (questionnaire.getGelTrue().equals("true")) {
+                    if (availability.getGelAvailability() < 3) {
+                        Integer size = availability.getGelAvailability() + 1;
                         availability.setGelAvailability(size);
                     }
                 } else {
-                    if(availability.getGelAvailability()>0){
-                        Integer size = availability.getGelAvailability()-1;
+                    if (availability.getGelAvailability() > 0) {
+                        Integer size = availability.getGelAvailability() - 1;
                         availability.setGelAvailability(size);
                     }
                 }
             }
 
-            if(maskPrize!=null && !maskPrize.equals("")){
+            if (questionnaire.getMaskPrice() != null && !questionnaire.getMaskPrice().equals("")) {
                 try {
-                    availability.setMaskPrize(Double.parseDouble(maskPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setMaskPrize(Double.parseDouble(questionnaire.getMaskPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
 
-            if(glovesPrize!=null && !glovesPrize.equals("")){
+            if (questionnaire.getGlovesPrice() != null && !questionnaire.getGlovesPrice().equals("")) {
                 try {
-                    availability.setGlovesPrize(Double.parseDouble(glovesPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setGlovesPrize(Double.parseDouble(questionnaire.getGlovesPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
 
-            if(gelPrize!=null && !gelPrize.equals("")){
+            if (questionnaire.getGelPrice() != null && !questionnaire.getGelPrice().equals("")) {
                 try {
-                    availability.setGelPrize(Double.parseDouble(gelPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setGelPrize(Double.parseDouble(questionnaire.getGelPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
@@ -120,33 +121,33 @@ public class StoreService {
 
         } else {
             Store store = new Store();
-            store.setId(id);
+            store.setId(questionnaire.getId());
 
             Statistic statistic = new Statistic();
-            if(queueTrue!=null){
-                if(queueTrue.equals("true")){
+            if (questionnaire.getQueueTrue() != null) {
+                if (questionnaire.getQueueTrue().equals("true")) {
                     statistic.setQueueSize(1);
                 } else {
                     statistic.setQueueSize(0);
                 }
-            } else{
+            } else {
                 statistic.setQueueSize(0);
             }
             store.setStatistic(statistic);
 
             Availability availability = new Availability();
-            if(maskTrue!=null){
-                if(maskTrue.equals("true")){
+            if (questionnaire.getMaskTrue() != null) {
+                if (questionnaire.getMaskTrue().equals("true")) {
                     availability.setMaskAvailability(1);
                 } else {
                     availability.setMaskAvailability(0);
                 }
-            }else {
+            } else {
                 availability.setMaskAvailability(0);
             }
 
-            if(glovesTrue!=null){
-                if(glovesTrue.equals("true")){
+            if (questionnaire.getGlovesTrue() != null) {
+                if (questionnaire.getGlovesTrue().equals("true")) {
                     availability.setGlovesAvailability(1);
                 } else {
                     availability.setGlovesAvailability(0);
@@ -155,8 +156,8 @@ public class StoreService {
                 availability.setGlovesAvailability(0);
             }
 
-            if(gelTrue!=null){
-                if(gelTrue.equals("true")){
+            if (questionnaire.getGelTrue() != null) {
+                if (questionnaire.getGelTrue().equals("true")) {
                     availability.setGelAvailability(1);
                 } else {
                     availability.setGelAvailability(0);
@@ -165,26 +166,26 @@ public class StoreService {
                 availability.setGelAvailability(0);
             }
 
-            if(maskPrize!=null && !maskPrize.equals("")){
+            if (questionnaire.getMaskPrice() != null && !questionnaire.getMaskPrice().equals("")) {
                 try {
-                    availability.setMaskPrize(Double.parseDouble(maskPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setMaskPrize(Double.parseDouble(questionnaire.getMaskPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
 
-            if(glovesPrize!=null && !glovesPrize.equals("")){
+            if (questionnaire.getGlovesPrice() != null && !questionnaire.getGlovesPrice().equals("")) {
                 try {
-                    availability.setGlovesPrize(Double.parseDouble(glovesPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setGlovesPrize(Double.parseDouble(questionnaire.getGlovesPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
 
-            if(gelPrize!=null && !gelPrize.equals("")){
+            if (questionnaire.getGelPrice() != null && !questionnaire.getGelPrice().equals("")) {
                 try {
-                    availability.setGelPrize(Double.parseDouble(gelPrize.replaceAll(",", ".")));
-                } catch (Exception ignored){
+                    availability.setGelPrize(Double.parseDouble(questionnaire.getGelPrice().replaceAll(",", ".")));
+                } catch (Exception ignored) {
 
                 }
             }
