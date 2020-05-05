@@ -21,9 +21,9 @@ public class SearchResultsDtoMapper {
         StoreDto storeDto = new StoreDto();
         String[] address = results.getAddress().split(",");
 
-        String country = null;
-        String street = null;
-        String town = null;
+        String country = "";
+        String street = "";
+        String town = "";
         if (address.length>2) {
             country = address[2];
             street = address[0];

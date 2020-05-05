@@ -7,6 +7,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,9 @@ public class ShopsSearcherParser {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final ShopsNamesService shopsNamesService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final String apiKey = "AIzaSyByf6Wfz_btg3iIOcdwav_UCOJGucPln4g";
+
+    @Value("${API_Key}")
+    private String apiKey;
 
     @Autowired
     public ShopsSearcherParser(ShopsNamesService shopsNamesService) {
